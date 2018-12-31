@@ -76,3 +76,16 @@ Route::group(['as' => 'protection.'], function () {
     Route::get('membership/access-denied', 'MembershipController@failed')->name('membership.failed');
     Route::get('membership/clear-cache/', 'MembershipController@clearValidationCache')->name('membership.clear_validation_cache');
 });
+
+/**
+ * Finance
+ */
+Route::group(['prefix' => 'finance', 'as' => 'finance.', 'middleware' => 'auth'], function () {
+    // Dashboard
+    Route::get('/', 'VoucherController@index')->name('dashboard');
+
+    Route::get('finance', 'FinanceController@index')->name('finance');
+    Route::get('finance/cash-voucher', 'FinanceController@index')->name('finance');
+    Route::get('finance/cash-voucher/{voucher}', 'FinanceController@show')->name('finance.show');
+    Route::get('finance/cash-voucher/{voucher}/edit', 'FinanceController@show')->name('finance.edit');
+});
