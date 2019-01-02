@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Finance;
 
 use App\Models\Auth\User\User;
 use Arcanedev\LogViewer\Entities\Log;
@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Routing\Route;
 
-class DashboardController extends Controller
+class VoucherController extends Controller
 {
     /**
      * Create a new controller instance.

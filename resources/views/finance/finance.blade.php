@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="title m-b-md">
-        User area
+        Finance Area
     </div>
     <div class="m-b-md">
         @if($valid)

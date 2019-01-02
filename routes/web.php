@@ -80,12 +80,12 @@ Route::group(['as' => 'protection.'], function () {
 /**
  * Finance
  */
-Route::group(['prefix' => 'finance', 'as' => 'finance.', 'middleware' => 'auth'], function () {
+Route::group(['prefix' => 'finance', 'as' => 'finance.', 'namespace' => 'Finance', 'middleware' => 'auth'], function () {
     // Dashboard
-    Route::get('/', 'VoucherController@index')->name('dashboard');
+    Route::get('/', 'VoucherController@index')->name('finance');
 
-    Route::get('finance', 'FinanceController@index')->name('finance');
-    Route::get('finance/cash-voucher', 'FinanceController@index')->name('finance');
-    Route::get('finance/cash-voucher/{voucher}', 'FinanceController@show')->name('finance.show');
-    Route::get('finance/cash-voucher/{voucher}/edit', 'FinanceController@show')->name('finance.edit');
+    Route::get('finance', 'VoucherController@index')->name('finance');
+    Route::get('finance/cash-voucher', 'VoucherController@index')->name('finance');
+    Route::get('finance/cash-voucher/{voucher}', 'VoucherController@show')->name('finance.show');
+    Route::get('finance/cash-voucher/{voucher}/edit', 'VoucherController@edit')->name('finance.edit');
 });
