@@ -42,6 +42,7 @@ class VoucherController extends Controller
             }
         }
 
-        return view('admin.dashboard', ['counts' => $counts]);
+        // return view('admin.dashboard', ['counts' => $counts]);
+        return view('finance.dashboard');
     }
 }

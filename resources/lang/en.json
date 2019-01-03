@@ -167,5 +167,8 @@
   "views.membership.table_header_5": "Expires",
   "views.membership.table_header_6": "Actions",
   "views.membership.valid": "valid",
-  "views.membership.not_valid": "not valid"
+  "views.membership.not_valid": "not valid",
+  "*********************** Awani Support Application *****************": "Awani Support Application i18n",
+  "views.welcome.finance": "Finance",
+  "views.welcome.mcr": "MCR"
 }

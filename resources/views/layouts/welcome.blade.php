@@ -73,6 +73,41 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
+            .card {
+              height: 200px;
+              width: 150px;
+              color: #333;
+              margin: 40px 5px 0 5px;
+              background: #F7f7f7;
+              transition: background-color 0.5s ease, color 0.5s ease;
+              box-shadow: 0 10px 10px rgba(0,0,0,0.2);
+              display: inline-block;
+              position: relative;
+              text-decoration: none;
+              font-family: 'Roboto', sans-serif;
+            }
+
+            .card:hover {
+              background: #333;
+              color: #fff
+            }
+
+            .card img {
+              max-width: 100%;
+              max-height: 250px;
+            }
+
+            .card p {
+              height: 50px;
+              width: 100%;
+              padding: 0;
+              margin: 0;
+              line-height: 42px;
+              text-align: center;
+              overflow-x: hidden;
+              overflow-y: hidden;
+            }
+
         </style>
 
         <!-- Laravel variables for js -->
@@ -83,6 +118,8 @@
 
                 <div class="top-right links">
                     <a href="{{ route('protection.membership') }}">{{ __('views.welcome.member_area') }}</a>
+                    <a href="{{ url('/finance') }}">{{ __('views.welcome.finance') }}</a>
+                    <a href="{{ url('/mcr') }}">{{ __('views.welcome.mcr') }}</a>
 
                     @if (Route::has('login'))
                         @if (!Auth::check())
@@ -104,7 +141,7 @@
                 <div class="footer">
                     Credits:&nbsp;
                     <a href="http://netlicensing.io/?utm_source=Laravel_Boilerplate&amp;utm_medium=github&amp;utm_campaign=laravel_boilerplate&amp;utm_content=credits" target="_blank" title="Online Software License Management"><i class="fa fa-lock" aria-hidden="true"></i>NetLicensing</a>&nbsp;&bull;&nbsp;
-                    <a href="https://photolancer.zone/?utm_source=Laravel_Boilerplate&amp;utm_medium=github&amp;utm_campaign=laravel_boilerplate&amp;utm_content=credits" target="_blank" title="Individual digital content for your next campaign"><i class="fa fa-camera-retro" aria-hidden="true"></i>Photolancer Zone</a>
+                    <!-- <a href="https://photolancer.zone/?utm_source=Laravel_Boilerplate&amp;utm_medium=github&amp;utm_campaign=laravel_boilerplate&amp;utm_content=credits" target="_blank" title="Individual digital content for your next campaign"><i class="fa fa-camera-retro" aria-hidden="true"></i>Photolancer Zone</a> -->
                 </div>
             </div>
         </div>

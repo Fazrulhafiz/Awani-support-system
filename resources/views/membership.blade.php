@@ -19,17 +19,11 @@
             Click <a href="{{ $shopUrl }}">here</a> to extend or renew your membership.
         @endif
 
-        <!-- <div class="box effect1">
-            <h3>FINANCE</h3>
-        </div>
-        <div class="box effect1">
-            <h3>MCR</h3>
-        </div>
- -->
-        <a href="" class="card">
+        <br/><br/>
+        <a href="{{ url('/finance') }}" class="card">
           <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sq-sample35.jpg" alt="sq-sample35" />
           <p>FINANCE</p>
-        </a><a href="" class="card">
+        </a><a href="{{ url('/mcr') }}" class="card">
           <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sq-sample35.jpg" alt="sq-sample35" />
           <p>MCR</p>
         </a>

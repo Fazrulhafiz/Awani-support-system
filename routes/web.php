@@ -84,8 +84,7 @@ Route::group(['prefix' => 'finance', 'as' => 'finance.', 'namespace' => 'Finance
     // Dashboard
     Route::get('/', 'VoucherController@index')->name('finance');
 
-    Route::get('finance', 'VoucherController@index')->name('finance');
-    Route::get('finance/cash-voucher', 'VoucherController@index')->name('finance');
-    Route::get('finance/cash-voucher/{voucher}', 'VoucherController@show')->name('finance.show');
-    Route::get('finance/cash-voucher/{voucher}/edit', 'VoucherController@edit')->name('finance.edit');
+    Route::get('cash-voucher', 'VoucherController@voucher')->name('cash-voucher');
+    Route::get('cash-voucher/{voucher}', 'VoucherController@showvoucher')->name('cash-voucher.show');
+    Route::get('cash-voucher/{voucher}/edit', 'VoucherController@editvoucher')->name('cash-voucher.edit');
 });
