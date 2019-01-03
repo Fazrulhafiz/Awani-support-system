@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Finance;
 
 use App\Models\Auth\User\User;
+use App\Models\Finance\Voucher\Voucher;
 use Arcanedev\LogViewer\Entities\Log;
 use Arcanedev\LogViewer\Entities\LogEntry;
 use Carbon\Carbon;
@@ -43,6 +44,6 @@ class VoucherController extends Controller
         }
 
         // return view('admin.dashboard', ['counts' => $counts]);
-        return view('finance.dashboard');
+        return view('finance.dashboard')->with('vouchers', $vouchers);
     }
 }
