@@ -5,10 +5,10 @@ namespace App\Models\Finance\Voucher;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * App\Models\Auth\Role\Role
+ * App\Models\Finance\Voucher\Voucher
  *
- * @property int $id
- * @property string $name
+ * @property string $voucher_no
+ * @property string $pay_to
  * @property int $weight
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at

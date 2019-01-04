@@ -170,5 +170,8 @@
   "views.membership.not_valid": "not valid",
   "*********************** Awani Support Application *****************": "Awani Support Application i18n",
   "views.welcome.finance": "Finance",
-  "views.welcome.mcr": "MCR"
+  "views.welcome.mcr": "MCR",
+  "views.admin.finance.dashboard.table_header_0": "Voucher #",
+  "views.admin.finance.dashboard.table_header_1": "Pay to",
+  "views.admin.finance.dashboard.table_header_2": "Date disburse"
 }
