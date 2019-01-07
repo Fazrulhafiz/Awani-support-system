@@ -87,4 +87,14 @@ Route::group(['prefix' => 'finance', 'as' => 'finance.', 'namespace' => 'Finance
     Route::get('cash-voucher', 'VoucherController@voucher')->name('cash-voucher');
     Route::get('cash-voucher/{voucher}', 'VoucherController@showvoucher')->name('cash-voucher.show');
     Route::get('cash-voucher/{voucher}/edit', 'VoucherController@editvoucher')->name('cash-voucher.edit');
+
+    Route::get('new-voucher', 'VoucherController@newvoucher')->name('cash-voucher.new');
+
+    Route::get('print-voucher', function()
+    {
+        Fpdf::AddPage();
+        Fpdf::SetFont('Courier', 'B', 18);
+        Fpdf::Cell(50, 25, 'Hello World!');
+        Fpdf::Output();
+    });
 });
