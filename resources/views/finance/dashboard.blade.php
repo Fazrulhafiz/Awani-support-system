@@ -17,7 +17,7 @@
                 <tr>
                     <td>{{ $voucher->voucher_no }}</td>
                     <td>{{ $voucher->pay_to }}</td>
-                    <td>{{ $voucher->created_date }}</td>
+                    <td>{{ \Carbon\Carbon::parse($voucher->created_date)->format('d/m/Y') }}</td>
                     <td>
                         <a class="btn btn-xs btn-primary" href="{{ route('finance.cash-voucher.show', [$voucher->id]) }}" data-toggle="tooltip" data-placement="top" data-title="{{ __('views.admin.users.index.show') }}">
                             <i class="fa fa-eye"></i>

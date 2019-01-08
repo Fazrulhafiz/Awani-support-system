@@ -36,4 +36,16 @@ class VoucherController extends Controller
 
         return view('finance.dashboard', ['vouchers' => $vouchers]);
     }
+
+    /**
+     * New voucher application.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function newvoucher()
+    {
+        $vouchers = DB::table('cash_voucher')->paginate(15);
+
+        return view('finance.dashboard', ['vouchers' => $vouchers]);
+    }
 }
