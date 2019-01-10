@@ -33,6 +33,7 @@ class VoucherController extends Controller
     public function index()
     {
         $vouchers = DB::table('cash_voucher')->paginate(15);
+        // dd($vouchers);
 
         return view('finance.dashboard', ['vouchers' => $vouchers]);
     }
