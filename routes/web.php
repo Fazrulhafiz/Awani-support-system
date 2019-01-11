@@ -89,7 +89,7 @@ Route::group(['prefix' => 'finance', 'as' => 'finance.', 'namespace' => 'Finance
     Route::get('cash-voucher/{voucher}/edit', 'VoucherController@editvoucher')->name('cash-voucher.edit');
 
     Route::get('new-voucher', 'VoucherController@showRegistrationForm')->name('newvoucher');
-
+    
     Route::get('print-voucher', function()
     {
         Fpdf::AddPage();

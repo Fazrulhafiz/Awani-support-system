@@ -118,8 +118,8 @@
 
                 <div class="top-right links">
                     <a href="{{ route('protection.membership') }}">{{ __('views.welcome.member_area') }}</a>
-                    <a href="{{ url('/finance') }}">{{ __('views.welcome.finance') }}</a>
-                    <a href="{{ url('/mcr') }}">{{ __('views.welcome.mcr') }}</a>
+                    <!-- <a href="{{ url('/finance') }}">{{ __('views.welcome.finance') }}</a> -->
+                    <!-- <a href="{{ url('/mcr') }}">{{ __('views.welcome.mcr') }}</a> -->
 
                     @if (Route::has('login'))
                         @if (!Auth::check())
@@ -139,8 +139,8 @@
             <div class="content">
                 @yield('content')
                 <div class="footer">
-                    Credits:&nbsp;
-                    <a href="http://netlicensing.io/?utm_source=Laravel_Boilerplate&amp;utm_medium=github&amp;utm_campaign=laravel_boilerplate&amp;utm_content=credits" target="_blank" title="Online Software License Management"><i class="fa fa-lock" aria-hidden="true"></i>NetLicensing</a>&nbsp;&bull;&nbsp;
+                    <!-- Credits:&nbsp; -->
+                    <!-- <a href="http://netlicensing.io/?utm_source=Laravel_Boilerplate&amp;utm_medium=github&amp;utm_campaign=laravel_boilerplate&amp;utm_content=credits" target="_blank" title="Online Software License Management"><i class="fa fa-lock" aria-hidden="true"></i>NetLicensing</a>&nbsp;&bull;&nbsp; -->
                     <!-- <a href="https://photolancer.zone/?utm_source=Laravel_Boilerplate&amp;utm_medium=github&amp;utm_campaign=laravel_boilerplate&amp;utm_content=credits" target="_blank" title="Individual digital content for your next campaign"><i class="fa fa-camera-retro" aria-hidden="true"></i>Photolancer Zone</a> -->
                 </div>
             </div>

@@ -1,7 +1,10 @@
 @extends('layouts.welcome')
 
+@extends('finance.layouts.finance')
+
 @section('content')
     <div class="row">
+        <button href="{{ url('finance.new-voucher') }}" type="button" class="btn btn-default">New application</button>
         <table class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
             <thead>
             <tr>
@@ -12,7 +15,6 @@
             </tr>
             </thead>
             <tbody>
-                <button href="{{ url('finance.new-voucher') }}" type="button" class="btn btn-default">New application</button>
             @foreach($vouchers as $voucher)
                 <tr>
                     <td>{{ $voucher->voucher_no }}</td>
