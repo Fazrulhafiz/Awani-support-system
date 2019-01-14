@@ -1,13 +1,13 @@
 <?php
 
 namespace App\Http\Controllers\Finance;
+use Illuminate\Http\Request;
 
 use App\Models\Auth\User\User;
 use App\Models\Finance\Voucher\Voucher;
 use Arcanedev\LogViewer\Entities\Log;
 use Arcanedev\LogViewer\Entities\LogEntry;
 use Carbon\Carbon;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Routing\Route;
 
@@ -43,10 +43,23 @@ class VoucherController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function newvoucher()
+    public function create()
     {
-        $vouchers = DB::table('cash_voucher')->paginate(15);
+        return view('finance.cash-voucher.create');
+    }
 
-        return view('finance.dashboard', ['vouchers' => $vouchers]);
+    public function store(Request $request)
+    {
+        $voucher = [];
+
+        $voucher['name'] = $request->get('name');
+        $voucher['email'] = $request->get('email');
+        $voucher['msg'] = $request->get('msg');
+
+        // Mail delivery logic goes here
+
+        flash('Your voucher has been created!')->success();
+
+        return redirect()->route('new-voucher.create');
     }
 }

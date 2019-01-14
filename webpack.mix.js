@@ -137,3 +137,10 @@ mix.styles([
  |--------------------------------------------------------------------------
  |
  */
+ mix.scripts([
+     'resources/assets/finance/js/finance.js'
+ ], 'public/assets/finance/js/finance.js').version();
+
+ mix.styles([
+     'resources/assets/finance/css/finance.css'
+ ], 'public/assets/finance/css/finance.css').version();

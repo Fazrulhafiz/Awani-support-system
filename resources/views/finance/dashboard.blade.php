@@ -4,8 +4,8 @@
 
 @section('content')
     <div class="row">
-        <button href="{{ url('finance.new-voucher') }}" type="button" class="btn btn-default">New application</button>
-        <table class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+        <button href="{{ route('finance.cash-voucher') }}" type="button" class="btn btn-default">New application</button>
+        <table class="finance-table" cellspacing="0" width="100%">
             <thead>
             <tr>
                 <th>@sortablelink('voucher_no', __('views.admin.finance.dashboard.table_header_0'),['page' => $vouchers->currentPage()])</th>
