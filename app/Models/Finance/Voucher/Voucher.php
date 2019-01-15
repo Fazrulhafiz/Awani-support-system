@@ -36,6 +36,6 @@ class Voucher extends Model
      *
      * @var array
      */
-    protected $fillable = ['voucher_no', 'pay_to', 'payment_for', 'ringgit', 'rm', 'cost_centre', 'gl_code', 'created_date'];
+    protected $fillable = ['id', 'voucher_no', 'pay_to', 'payment_for', 'ringgit', 'rm', 'cost_centre', 'gl_code', 'created_date'];
 
 }

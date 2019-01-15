@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="row">
-        <button href="{{ route('finance.cash-voucher') }}" type="button" class="btn btn-default">New application</button>
+        <a href="{{ url('/new-voucher') }}">New voucher</a>
         <table class="finance-table" cellspacing="0" width="100%">
             <thead>
             <tr>
@@ -21,12 +21,8 @@
                     <td>{{ $voucher->pay_to }}</td>
                     <td>{{ \Carbon\Carbon::parse($voucher->created_date)->format('d/m/Y') }}</td>
                     <td>
-                        <a class="btn btn-xs btn-primary" href="{{ route('finance.cash-voucher.show', [$voucher->id]) }}" data-toggle="tooltip" data-placement="top" data-title="{{ __('views.admin.users.index.show') }}">
-                            <i class="fa fa-eye"></i>
-                        </a>
-                        <a class="btn btn-xs btn-info" href="{{ route('admin.users.edit', [$voucher->id]) }}" data-toggle="tooltip" data-placement="top" data-title="{{ __('views.admin.users.index.edit') }}">
-                            <i class="fa fa-pencil"></i>
-                        </a>
+                        [<a href="{{ url('cash-voucher/'.$voucher->id.'/show') }}">View</a>]
+                        [<a href="{{ url('cash-voucher/'.$voucher->id.'/edit') }}">Edit</a>]
                         {{--@if(!$voucher->hasRole('administrator'))--}}
                             {{--<button class="btn btn-xs btn-danger user_destroy"--}}
                                     {{--data-url="{{ route('admin.users.destroy', [$voucher->id]) }}" data-toggle="tooltip" data-placement="top" data-title="{{ __('views.admin.users.index.delete') }}">--}}
