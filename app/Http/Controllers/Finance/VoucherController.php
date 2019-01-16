@@ -45,7 +45,10 @@ class VoucherController extends Controller
      */
     public function create()
     {
-        return view('finance.cash-voucher.create');
+        $cost_centre = DB::table('cost_centre')->pluck('cost_centre', 'id', 'description');
+        $gl_code = DB::table('gl_code')->pluck('gl_code', 'id', 'gl_name');
+
+        return view('finance.cash-voucher.create', ['cost_centre' => $cost_centre, 'gl_code' => $gl_code]);
     }
 
     public function store(Request $request)

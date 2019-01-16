@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="row">
-        <a href="{{ url('/new-voucher') }}">New voucher</a>
+        <a href="{{ url('/finance/new-voucher') }}">New voucher</a>
         <table class="finance-table" cellspacing="0" width="100%">
             <thead>
             <tr>
