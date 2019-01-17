@@ -1,44 +1,61 @@
 @extends('layouts.welcome')
 
+@extends('finance.layouts.finance')
+
 @section('content')
     {!! Form::open(['route' => 'finance.new-voucher.store']) !!}
 
-    <div class="form-group">
-        {!! Form::label('pay_to', 'Pay to') !!}
-        {!! Form::text('pay_to', null, ['class' => 'form-control']) !!}
-    </div>
+      <!--  General -->
+      <div class="form-group">
+        <h2 class="heading">Petty Cash Voucher</h2>
+        <div class="controls">
+          {!! Form::text('pay_to', null, ['class' => 'floatLabel']) !!}
+          {!! Form::label('pay_to', 'Pay to') !!}
+        </div>
+        <div class="controls">
+          {!! Form::text('payment_for', null, ['class' => 'floatLabel']) !!}
+          {!! Form::label('payment_for', 'Payment for') !!}
+        </div>
+          <div class="grid">
+            <div class="col-2-3">
+              <div class="controls">
+               {!! Form::text('ringgit', null, ['class' => 'floatLabel']) !!}
+               {!! Form::label('ringgit', 'Ringgit') !!}
+              </div>
+            </div>
+            <div class="col-1-3">
+              <div class="controls">
+                {!! Form::number('rm', null, ['class' => 'floatLabel']) !!}
+                {!! Form::label('rm', 'MYR') !!}
+              </div>
+            </div>
+          </div>
+      </div>
+      <!--  Details -->
+      <div class="form-group">
+        <h2 class="heading">Details</h2>
+          <div class="grid">
+        <div class="col-1-2 col-1-2-sm">
+        <div class="controls">
+          <i class="fa fa-sort"></i>
+          {!! Form::select('cost_centre', $cost_centre, null, ['class' => 'floatLabel']) !!}
+          {!! Form::label('cost_centre', 'Cost centre') !!}
+         </div>
+        </div>
 
-    <div class="form-group">
-        {!! Form::label('payment_for', 'Payment for') !!}
-        {!! Form::text('payment_for', null, ['class' => 'form-control']) !!}
-    </div>
+        <div class="col-1-2 col-1-2-sm">
+        <div class="controls">
+          <i class="fa fa-sort"></i>
+          {!! Form::select('gl_code', $gl_code, null, ['class' => 'floatLabel']) !!}
+          {!! Form::label('gl_code', 'GL code') !!}
+         </div>
+        </div>
 
-    <div class="form-group">
-        {!! Form::label('ringgit', 'Ringgit') !!}
-        {!! Form::text('ringgit', null, ['class' => 'form-control']) !!}
-    </div>
-
-    <div class="form-group">
-        {!! Form::label('rm', 'MYR') !!}
-        {!! Form::text('rm', null, ['class' => 'form-control']) !!}
-    </div>
-
-    <div class="form-group">
-        {!! Form::label('cost_centre', 'Cost centre') !!}
-        {!! Form::select('cost_centre', $cost_centre) !!}
-    </div>
-
-    <div class="form-group">
-        {!! Form::label('gl_code', 'GL code') !!}
-        {!! Form::select('gl_code', $gl_code) !!}
-    </div>
-
-    <div class="form-group">
-        {!! Form::label('created_by', 'Created') !!}
-        {!! Form::text('created_by', '1') !!}
-    </div>
-
-    {!! Form::submit('Submit', ['class' => 'btn btn-info']) !!}
+         </div>
+          <div class="grid">
+                {!! Form::submit('Submit', ['class' => 'col-1-4']) !!}
+          </div>
+      </div> <!-- /.form-group -->
 
     {!! Form::close() !!}
 @endsection
