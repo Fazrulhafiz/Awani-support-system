@@ -65,4 +65,16 @@ class VoucherController extends Controller
 
         return redirect()->route('new-voucher.create');
     }
+
+    public function showvoucher($voucher)
+    {
+        return view('finance.cash-voucher.show', ['id' => $voucher]);
+    }
+
+    public function editvoucher($voucher)
+    {
+        $voucherdetail = DB::table('cash_voucher')->where('id', '=', $voucher)->get();
+
+        return view('finance.cash-voucher.edit')->with(['voucherdetail' => $voucherdetail]);
+    }
 }

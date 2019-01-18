@@ -54,6 +54,7 @@
          </div>
           <div class="grid">
                 {!! Form::submit('Submit', ['class' => 'col-1-4']) !!}
+                <a class="col-1-4" href="{{ url('/finance') }}">Cancel</a>
           </div>
       </div> <!-- /.form-group -->
 

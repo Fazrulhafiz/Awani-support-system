@@ -1,156 +1,62 @@
-@extends('admin.layouts.admin')
+@extends('layouts.welcome')
 
-@section('title',__('views.admin.users.edit.title', ['name' => $user->name]) )
+@extends('finance.layouts.finance')
 
 @section('content')
-    <div class="row">
-        <div class="col-md-12 col-sm-12 col-xs-12">
-            {{ Form::open(['route'=>['admin.users.update', $user->id],'method' => 'put','class'=>'form-horizontal form-label-left']) }}
+    {!! Form::open(['route' => 'finance.new-voucher.store']) !!}
 
-                <div class="form-group">
-                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name" >
-                        {{ __('views.admin.users.edit.name') }}
-                        <span class="required">*</span>
-                    </label>
-                    <div class="col-md-6 col-sm-6 col-xs-12">
-                        <input id="name" type="text" class="form-control col-md-7 col-xs-12 @if($errors->has('name')) parsley-error @endif"
-                               name="name" value="{{ $user->name }}" required>
-                        @if($errors->has('name'))
-                            <ul class="parsley-errors-list filled">
-                                @foreach($errors->get('name') as $error)
-                                        <li class="parsley-required">{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        @endif
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">
-                        {{ __('views.admin.users.edit.email') }}
-                        <span class="required">*</span>
-                    </label>
-                    <div class="col-md-6 col-sm-6 col-xs-12">
-                        <input id="email" type="email" class="form-control col-md-7 col-xs-12 @if($errors->has('email')) parsley-error @endif"
-                               name="email" value="{{ $user->email }}" required>
-                        @if($errors->has('email'))
-                            <ul class="parsley-errors-list filled">
-                                @foreach($errors->get('email') as $error)
-                                    <li class="parsley-required">{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        @endif
-                    </div>
-                </div>
-
-                @if(!$user->hasRole('administrator'))
-                    <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="active" >
-                            {{ __('views.admin.users.edit.active') }}
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                            <div class="checkbox">
-                                <label>
-                                    <input id="active" type="checkbox" class="@if($errors->has('active')) parsley-error @endif"
-                                           name="active" @if($user->active) checked="checked" @endif value="1">
-                                    @if($errors->has('active'))
-                                        <ul class="parsley-errors-list filled">
-                                            @foreach($errors->get('active') as $error)
-                                                <li class="parsley-required">{{ $error }}</li>
-                                            @endforeach
-                                        </ul>
-                                    @endif
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="confirmed" >
-                            {{ __('views.admin.users.edit.confirmed') }}
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                            <div class="checkbox">
-                                <label>
-                                    <input id="confirmed" type="checkbox" class="@if($errors->has('confirmed')) parsley-error @endif"
-                                           name="confirmed" @if($user->confirmed) checked="checked" @endif value="1">
-                                    @if($errors->has('confirmed'))
-                                        <ul class="parsley-errors-list filled">
-                                            @foreach($errors->get('confirmed') as $error)
-                                                <li class="parsley-required">{{ $error }}</li>
-                                            @endforeach
-                                        </ul>
-                                    @endif
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                @endif
-
-                <div class="form-group">
-                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="password">
-                        {{ __('views.admin.users.edit.password') }}
-                    </label>
-                    <div class="col-md-6 col-sm-6 col-xs-12">
-                        <input id="password" type="password" class="form-control col-md-7 col-xs-12 @if($errors->has('password')) parsley-error @endif"
-                               name="password">
-                        @if($errors->has('password'))
-                            <ul class="parsley-errors-list filled">
-                                @foreach($errors->get('password') as $error)
-                                    <li class="parsley-required">{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        @endif
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="password_confirmation">
-                        {{ __('views.admin.users.edit.confirm_password') }}
-                    </label>
-                    <div class="col-md-6 col-sm-6 col-xs-12">
-                        <input id="password_confirmation" type="password" class="form-control col-md-7 col-xs-12 @if($errors->has('password_confirmation')) parsley-error @endif"
-                               name="password_confirmation">
-                        @if($errors->has('password_confirmation'))
-                            <ul class="parsley-errors-list filled">
-                                @foreach($errors->get('password_confirmation') as $error)
-                                    <li class="parsley-required">{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        @endif
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="roles">
-                        {{ __('views.admin.users.edit.roles') }}
-                    </label>
-                    <div class="col-md-6 col-sm-6 col-xs-12">
-                        <select id="roles" name="roles[]" class="select2" multiple="multiple" style="width: 100%" autocomplete="off">
-                            @foreach($roles as $role)
-                                <option @if($user->roles->find($role->id)) selected="selected" @endif value="{{ $role->id }}">{{ $role->name }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                        <a class="btn btn-primary" href="{{ URL::previous() }}"> {{ __('views.admin.users.edit.cancel') }}</a>
-                        <button type="submit" class="btn btn-success"> {{ __('views.admin.users.edit.save') }}</button>
-                    </div>
-                </div>
-            {{ Form::close() }}
+      <!--  General -->
+      <div class="form-group">
+        <h2 class="heading">Petty Cash Voucher</h2>
+        <div class="controls">
+          {!! Form::text('pay_to', $voucherdetail[0]->pay_to, ['class' => 'floatLabel']) !!}
+          {!! Form::label('pay_to', 'Pay to') !!}
         </div>
-    </div>
-@endsection
+        <div class="controls">
+          {!! Form::text('payment_for', $voucherdetail[0]->payment_for, ['class' => 'floatLabel']) !!}
+          {!! Form::label('payment_for', 'Payment for') !!}
+        </div>
+          <div class="grid">
+            <div class="col-2-3">
+              <div class="controls">
+               {!! Form::text('ringgit', $voucherdetail[0]->ringgit, ['class' => 'floatLabel']) !!}
+               {!! Form::label('ringgit', 'Ringgit') !!}
+              </div>
+            </div>
+            <div class="col-1-3">
+              <div class="controls">
+                {!! Form::number('rm', $voucherdetail[0]->rm, ['class' => 'floatLabel']) !!}
+                {!! Form::label('rm', 'MYR') !!}
+              </div>
+            </div>
+          </div>
+      </div>
+      <!--  Details -->
+      <div class="form-group">
+        <h2 class="heading">Details</h2>
+          <div class="grid">
+        <div class="col-1-2 col-1-2-sm">
+        <div class="controls">
+          <i class="fa fa-sort"></i>
+          {!! Form::text('cost_centre', $voucherdetail[0]->cost_centre, ['class' => 'floatLabel']) !!}
+          {!! Form::label('cost_centre', 'Cost centre') !!}
+         </div>
+        </div>
 
-@section('styles')
-    @parent
-    {{ Html::style(mix('assets/admin/css/users/edit.css')) }}
-@endsection
+        <div class="col-1-2 col-1-2-sm">
+        <div class="controls">
+          <i class="fa fa-sort"></i>
+          {!! Form::text('gl_code', $voucherdetail[0]->gl_code, ['class' => 'floatLabel']) !!}
+          {!! Form::label('gl_code', 'GL code') !!}
+         </div>
+        </div>
 
-@section('scripts')
-    @parent
-    {{ Html::script(mix('assets/admin/js/users/edit.js')) }}
+         </div>
+          <div class="grid">
+                {!! Form::submit('Submit', ['class' => 'col-1-4']) !!}
+                <a class="col-1-4" href="{{ url('/finance') }}">Cancel</a>
+          </div>
+      </div> <!-- /.form-group -->
+
+    {!! Form::close() !!}
 @endsection
