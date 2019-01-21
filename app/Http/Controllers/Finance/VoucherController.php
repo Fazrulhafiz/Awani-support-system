@@ -53,21 +53,31 @@ class VoucherController extends Controller
 
     public function store(Request $request)
     {
-        $voucher = [];
+        DB::table('cash_voucher')->insert([
+            'voucher_no'  =>  $request->get('voucher_no'),
+            'pay_to'  =>  $request->get('pay_to'),
+            'payment_for'  =>  $request->get('payment_for'),
+            'ringgit'  =>  $request->get('ringgit'),
+            'rm'  =>  $request->get('rm'),
+            'cost_centre'  =>  $request->get('cost_centre'),
+            'gl_code'  =>  $request->get('gl_code'),
+        ]);
+        return redirect('finance')->with('key', 'Your voucher has been created!');
+    }
 
-        $voucher['voucher_no'] = $request->get('voucher_no');
-        $voucher['pay_to'] = $request->get('pay_to');
-        $voucher['payment_for'] = $request->get('payment_for');
-        $voucher['ringgit'] = $request->get('ringgit');
-        $voucher['rm'] = $request->get('rm');
-        $voucher['cost_centre'] = $request->get('cost_centre');
-        $voucher['gl_code'] = $request->get('gl_code');
-
-        // Mail delivery logic goes here
-
-        flash('Your voucher has been created!')->success();
-
-        return redirect()->route('new-voucher.show');
+    public function update(Request $request)
+    {
+        DB::table('cash_voucher')
+        ->where('voucher_no', $request->get('voucher_no'))
+        ->update([
+            'pay_to'  =>  $request->get('pay_to'),
+            'payment_for'  =>  $request->get('payment_for'),
+            'ringgit'  =>  $request->get('ringgit'),
+            'rm'  =>  $request->get('rm'),
+            'cost_centre'  =>  $request->get('cost_centre'),
+            'gl_code'  =>  $request->get('gl_code'),
+        ]);
+        return redirect('finance')->with('key', 'Your voucher has been updated!');
     }
 
     public function showvoucher($voucher)

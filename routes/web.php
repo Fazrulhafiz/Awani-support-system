@@ -90,6 +90,7 @@ Route::group(['prefix' => 'finance', 'as' => 'finance.', 'namespace' => 'Finance
 
     Route::get('new-voucher', 'VoucherController@create')->name('new-voucher.create');
     Route::post('new-voucher', 'VoucherController@store')->name('new-voucher.store');
+    Route::post('new-voucher', 'VoucherController@update')->name('new-voucher.update');
 
     Route::get('print-voucher', function()
     {

@@ -3,11 +3,12 @@
 @extends('finance.layouts.finance')
 
 @section('content')
-    {!! Form::open(['route' => 'finance.new-voucher.store']) !!}
+    {!! Form::open(['route' => 'finance.new-voucher.update']) !!}
 
       <!--  General -->
       <div class="form-group">
-        <h2 class="heading">Petty Cash Voucher</h2>
+        <h2 class="heading">Petty Cash Voucher :: {!! $voucherdetail[0]->voucher_no !!}</h2>
+        {!! Form::hidden('voucher_no', $voucherdetail[0]->voucher_no) !!}
         <div class="controls">
           {!! Form::text('pay_to', $voucherdetail[0]->pay_to, ['class' => 'floatLabel']) !!}
           {!! Form::label('pay_to', 'Pay to') !!}
