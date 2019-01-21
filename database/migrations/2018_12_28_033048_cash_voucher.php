@@ -15,7 +15,7 @@ class CashVoucher extends Migration
     {
         Schema::create('cash_voucher', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('voucher_no');
+            $table->string('voucher_no', 8);
             $table->string('pay_to');
             $table->string('payment_for');
             $table->string('ringgit');

@@ -55,15 +55,19 @@ class VoucherController extends Controller
     {
         $voucher = [];
 
-        $voucher['name'] = $request->get('name');
-        $voucher['email'] = $request->get('email');
-        $voucher['msg'] = $request->get('msg');
+        $voucher['voucher_no'] = $request->get('voucher_no');
+        $voucher['pay_to'] = $request->get('pay_to');
+        $voucher['payment_for'] = $request->get('payment_for');
+        $voucher['ringgit'] = $request->get('ringgit');
+        $voucher['rm'] = $request->get('rm');
+        $voucher['cost_centre'] = $request->get('cost_centre');
+        $voucher['gl_code'] = $request->get('gl_code');
 
         // Mail delivery logic goes here
 
         flash('Your voucher has been created!')->success();
 
-        return redirect()->route('new-voucher.create');
+        return redirect()->route('new-voucher.show');
     }
 
     public function showvoucher($voucher)
