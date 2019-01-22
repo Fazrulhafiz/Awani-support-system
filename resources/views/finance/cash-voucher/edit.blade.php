@@ -3,7 +3,7 @@
 @extends('finance.layouts.finance')
 
 @section('content')
-    {!! Form::open(['route' => 'finance.new-voucher.update']) !!}
+    {!! Form::open(['route' => 'finance.cash-voucher.update']) !!}
 
       <!--  General -->
       <div class="form-group">

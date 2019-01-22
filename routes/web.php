@@ -87,10 +87,10 @@ Route::group(['prefix' => 'finance', 'as' => 'finance.', 'namespace' => 'Finance
     Route::get('cash-voucher', 'VoucherController@voucher')->name('cash-voucher');
     Route::get('cash-voucher/{voucher}/show', 'VoucherController@showvoucher')->name('cash-voucher.show');
     Route::get('cash-voucher/{voucher}/edit', 'VoucherController@editvoucher')->name('cash-voucher.edit');
+    Route::post('cash-voucher', 'VoucherController@update')->name('cash-voucher.update');
 
     Route::get('new-voucher', 'VoucherController@create')->name('new-voucher.create');
     Route::post('new-voucher', 'VoucherController@store')->name('new-voucher.store');
-    Route::post('new-voucher', 'VoucherController@update')->name('new-voucher.update');
 
     Route::get('print-voucher', function()
     {
