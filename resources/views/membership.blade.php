@@ -18,14 +18,5 @@
             <br/><br/>
             Click <a href="{{ $shopUrl }}">here</a> to extend or renew your membership.
         @endif
-
-        <br/><br/>
-        <a href="{{ url('/finance') }}" class="card">
-          <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sq-sample35.jpg" alt="sq-sample35" />
-          <p>FINANCE</p>
-        </a><a href="{{ url('/mcr') }}" class="card">
-          <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sq-sample35.jpg" alt="sq-sample35" />
-          <p>MCR</p>
-        </a>
     </div>
 @endsection
