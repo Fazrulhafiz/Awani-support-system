@@ -26,9 +26,9 @@
                     <td>{{ $voucher->pay_to }}</td>
                     <td>{{ \Carbon\Carbon::parse($voucher->created_date)->format('d/m/Y') }}</td>
                     <td>
-                        <a href="{{ url('finance/cash-voucher/'.$voucher->id.'/show') }}"><i class="far fa-eye"></i></a> &nbsp;
+                        <!-- <a href="{{ url('finance/cash-voucher/'.$voucher->id.'/show') }}"><i class="far fa-eye"></i></a> &nbsp; -->
                         <a href="{{ url('finance/cash-voucher/'.$voucher->id.'/edit') }}"><i class="far fa-edit"></i></a> &nbsp;
-                        <a href="{{ url('finance/cash-voucher/'.$voucher->id.'/print') }}"><i class="fas fa-print"></i></a> &nbsp;
+                        <a href="{{ url('finance/print-voucher/'.$voucher->id) }}" target="_blank"><i class="fas fa-print"></i></a> &nbsp;
                         {{--@if(!$voucher->hasRole('administrator'))--}}
                             {{--<button class="btn btn-xs btn-danger user_destroy"--}}
                                     {{--data-url="{{ route('admin.users.destroy', [$voucher->id]) }}" data-toggle="tooltip" data-placement="top" data-title="{{ __('views.admin.users.index.delete') }}">--}}

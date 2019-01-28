@@ -19,13 +19,13 @@
           <div class="grid">
             <div class="col-2-3">
               <div class="controls">
-               {!! Form::text('ringgit', null, ['class' => 'floatLabel']) !!}
+               {!! Form::text('ringgit', null, ['class' => 'floatLabel', 'id' => 'text']) !!}
                {!! Form::label('ringgit', 'Ringgit') !!}
               </div>
             </div>
             <div class="col-1-3">
               <div class="controls">
-                {!! Form::number('rm', null, ['class' => 'floatLabel']) !!}
+                {!! Form::number('rm', null, ['class' => 'floatLabel translateNumber']) !!}
                 {!! Form::label('rm', 'MYR') !!}
               </div>
             </div>
