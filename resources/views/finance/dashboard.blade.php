@@ -20,7 +20,7 @@
             </tr>
             </thead>
             <tbody>
-            @foreach($vouchers as $voucher)
+                @foreach($vouchers as $voucher)
                 <tr>
                     <td>{{ $voucher->voucher_no }}</td>
                     <td>{{ $voucher->pay_to }}</td>
@@ -37,8 +37,13 @@
                         {{--@endif--}}
                     </td>
                 </tr>
-            @endforeach
+                @endforeach
             </tbody>
         </table>
     </div>
+    <div class="row">
+        {{ $vouchers->links() }}
+    </div>
+
+    <div id="page-content" class="page-content">Page <?php $_GET["page"] ?></div>
 @endsection

@@ -12,7 +12,7 @@
 
     @if (Auth::check())
         <br/><br/>
-        @if (auth()->user()->hasRoles(['finance', 'administrator']))
+        @if (auth()->user()->hasRoles(['administrator', 'finance']))
             <a href="{{ url('/finance') }}" class="card">
               <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sq-sample35.jpg" alt="sq-sample35" />
               <p>FINANCE</p>

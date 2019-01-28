@@ -26,6 +26,7 @@
             <div class="col-1-3">
               <div class="controls">
                 {!! Form::number('rm', null, ['class' => 'floatLabel translateNumber']) !!}
+                <!-- , 'onkeyup' => "convertNumberToWords(this.value)" -->
                 {!! Form::label('rm', 'MYR') !!}
               </div>
             </div>

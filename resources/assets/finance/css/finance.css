@@ -232,7 +232,7 @@ button {
   cursor: pointer;
   background-color: #1b3d4d;
   border: none;
-  color: #fff;
+  color: #ff0000;
   padding: 12px 0;
   float: right;
 }
@@ -298,8 +298,8 @@ button:hover {
   min-width: 300px;
 }
 .rwd-table tr {
-  border-top: 1px solid #ddd;
-  border-bottom: 1px solid #ddd;
+  border-top: 1px solid #404040;
+  border-bottom: 1px solid #404040;
 }
 .rwd-table th {
   display: none;
@@ -340,8 +340,8 @@ button:hover {
   }
 }
 .rwd-table {
-  background: #34495E;
-  color: #fff;
+  background: #e4d8d8;
+  color: #000;
   border-radius: .4em;
   overflow: hidden;
 }
@@ -357,5 +357,29 @@ button:hover {
   }
 }
 .rwd-table th, .rwd-table td:before {
-  color: #dd5;
+  color: #7c7c5e;
+}
+
+.wrapper{
+  margin: 60px auto;
+  text-align: center;
+}
+.pagination{
+  display: inline-block;
+  margin-bottom: 1.75em;
+}
+.pagination li{
+  display: inline-block;
+}
+.pagination li.active{
+  text-decoration: underline green;
+  font-weight: bold;
+}
+
+.page-content{
+  background: #eee;
+  display: inline-block;
+  padding: 10px;
+  width: 100%;
+  max-width: 660px;
 }
