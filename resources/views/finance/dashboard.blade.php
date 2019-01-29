@@ -45,5 +45,5 @@
         {{ $vouchers->links() }}
     </div>
 
-    <div id="page-content" class="page-content">Page <?php $_GET["page"] ?></div>
+    <div id="page-content" class="page-content">Page <?php print (isset($_GET["page"]) ? $_GET["page"] : '1'); ?></div>
 @endsection
