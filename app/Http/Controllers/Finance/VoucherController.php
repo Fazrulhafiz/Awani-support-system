@@ -50,6 +50,8 @@ class VoucherController extends Controller
         $voucher_no = DB::table('cash_voucher')->max('voucher_no');
         if ($voucher_no<=3000) {
             $voucher_no = 3001;
+        } else {
+            $voucher_no += 1;
         }
 
         return view('finance.cash-voucher.create', ['cost_centre' => $cost_centre, 'gl_code' => $gl_code, 'voucher_no' => $voucher_no]);
