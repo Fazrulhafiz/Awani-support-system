@@ -7,7 +7,8 @@
 
       <!--  General -->
       <div class="form-group">
-        <h2 class="heading">Petty Cash Voucher</h2>
+        <h2 class="heading">Petty Cash Voucher <?php print sprintf("%05d", $voucher_no); ?></h2>
+        {!! Form::hidden('voucher_no', $voucher_no) !!}
         <div class="controls">
           {!! Form::text('pay_to', null, ['class' => 'floatLabel']) !!}
           {!! Form::label('pay_to', 'Pay to') !!}

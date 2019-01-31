@@ -122,8 +122,8 @@
         <div class="flex-center position-ref full-height">
 
                 <div class="top-right links">
-                    <a href="{{ route('protection.membership') }}">{{ __('views.welcome.member_area') }}</a>
-                    <!-- <a href="{{ url('/finance') }}">{{ __('views.welcome.finance') }}</a> -->
+                    <!-- <a href="{{ route('protection.membership') }}">{{ __('views.welcome.member_area') }}</a> -->
+                    <a href="{{ url('/') }}">{{ __('views.welcome.admin') }}</a>
                     <!-- <a href="{{ url('/mcr') }}">{{ __('views.welcome.mcr') }}</a> -->
 
                     @if (Route::has('login'))

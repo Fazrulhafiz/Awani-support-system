@@ -47,8 +47,12 @@ class VoucherController extends Controller
     {
         $cost_centre = DB::table('cost_centre')->pluck('cost_centre', 'id', 'description');
         $gl_code = DB::table('gl_code')->pluck('gl_code', 'id', 'gl_name');
+        $voucher_no = DB::table('cash_voucher')->max('voucher_no');
+        if ($voucher_no<=3000) {
+            $voucher_no = 3001;
+        }
 
-        return view('finance.cash-voucher.create', ['cost_centre' => $cost_centre, 'gl_code' => $gl_code]);
+        return view('finance.cash-voucher.create', ['cost_centre' => $cost_centre, 'gl_code' => $gl_code, 'voucher_no' => $voucher_no]);
     }
 
     public function store(Request $request)
