@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Finance;
+namespace App\Http\Controllers\Mcr;
 use Illuminate\Http\Request;
 
 use App\Models\Auth\User\User;
@@ -13,7 +13,7 @@ use Illuminate\Routing\Route;
 
 use Illuminate\Support\Facades\DB;
 
-class VoucherController extends Controller
+class OnboardController extends Controller
 {
     /**
      * Create a new controller instance.
