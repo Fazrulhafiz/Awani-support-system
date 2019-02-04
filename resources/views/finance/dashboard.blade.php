@@ -22,7 +22,7 @@
             <tbody>
                 @foreach($vouchers as $voucher)
                 <tr>
-                    <td>{{ $voucher->voucher_no }}</td>
+                    <td>PCV <?php print sprintf("%05d", $voucher->voucher_no); ?></td>
                     <td>{{ $voucher->pay_to }}</td>
                     <td>{{ \Carbon\Carbon::parse($voucher->created_date)->format('d/m/Y') }}</td>
                     <td>
