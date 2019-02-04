@@ -53,7 +53,7 @@
         <div class="col-1-2 col-1-2-sm">
         <div class="controls">
           <i class="fa fa-sort"></i>
-          <select class="floatLabel" name="cost_centre">
+          <select class="floatLabel" name="gl_code">
               <option value="select">SELECT ONE</option>
               @foreach($gl_code as $glcode)
               <option value="{{$glcode->id}}">{{$glcode->gl_code." ".$glcode->gl_name}}</option>

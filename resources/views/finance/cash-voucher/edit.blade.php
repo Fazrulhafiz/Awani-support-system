@@ -39,7 +39,17 @@
         <div class="col-1-2 col-1-2-sm">
         <div class="controls">
           <i class="fa fa-sort"></i>
-          {!! Form::select('cost_centre', $cost_centre, $voucherdetail[0]->cost_centre, ['class' => 'floatLabel']) !!}
+          <select class="floatLabel" name="cost_centre">
+              <option value="select">SELECT ONE</option>
+              @foreach($cost_centre as $cost)
+                  @if ($cost->id == $voucherdetail[0]->cost_centre)
+                      <?php $selected = "selected"; ?>
+                  @else
+                      <?php $selected = ""; ?>
+                  @endif
+                  <option value="{{$cost->id}}" <?php print $selected ?>>{{$cost->cost_centre." ".$cost->description}}</option>
+              @endforeach
+          </select>
           {!! Form::label('cost_centre', 'Cost centre', ['class' => 'active']) !!}
          </div>
         </div>
@@ -47,7 +57,17 @@
         <div class="col-1-2 col-1-2-sm">
         <div class="controls">
           <i class="fa fa-sort"></i>
-          {!! Form::select('gl_code', $gl_code, $voucherdetail[0]->gl_code, ['class' => 'floatLabel']) !!}
+          <select class="floatLabel" name="gl_code">
+              <option value="select">SELECT ONE</option>
+              @foreach($gl_code as $glcode)
+                  @if ($glcode->id == $voucherdetail[0]->gl_code)
+                      <?php $selected = "selected"; ?>
+                  @else
+                      <?php $selected = ""; ?>
+                  @endif
+                  <option value="{{$glcode->id}}" <?php print $selected ?>>{{$glcode->gl_code." ".$glcode->gl_name}}</option>
+              @endforeach
+          </select>
           {!! Form::label('gl_code', 'GL code', ['class' => 'active']) !!}
          </div>
         </div>

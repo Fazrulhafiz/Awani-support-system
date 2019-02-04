@@ -95,8 +95,8 @@ class VoucherController extends Controller
     public function editvoucher($voucher)
     {
         $voucherdetail = DB::table('cash_voucher')->where('id', '=', $voucher)->get();
-        $cost_centre = DB::table('cost_centre')->pluck('cost_centre', 'id', 'description');
-        $gl_code = DB::table('gl_code')->pluck('gl_code', 'id', 'gl_name');
+        $cost_centre = DB::table('cost_centre')->get();
+        $gl_code = DB::table('gl_code')->get();
 
         return view('finance.cash-voucher.edit')->with(['voucherdetail' => $voucherdetail, 'cost_centre' => $cost_centre, 'gl_code' => $gl_code]);
     }
