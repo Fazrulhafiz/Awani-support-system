@@ -11,8 +11,8 @@ return [
     |
     */
 
-    'orientation'   => 'L',
+    'orientation'   => 'P',
     'unit'          => 'mm',
-    'size'          => 'A5',
+    'size'          => 'A4',
 
 ];

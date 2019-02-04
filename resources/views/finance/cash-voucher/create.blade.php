@@ -40,16 +40,26 @@
         <div class="col-1-2 col-1-2-sm">
         <div class="controls">
           <i class="fa fa-sort"></i>
-          {!! Form::select('cost_centre', $cost_centre, null, ['class' => 'floatLabel']) !!}
-          {!! Form::label('cost_centre', 'Cost centre') !!}
+          <select class="floatLabel" name="cost_centre">
+              <option value="select">SELECT ONE</option>
+              @foreach($cost_centre as $cost)
+              <option value="{{$cost->id}}">{{$cost->cost_centre." ".$cost->description}}</option>
+              @endforeach
+          </select>
+          {!! Form::label('cost_centre', 'Cost Centre', ['class' => 'active']) !!}
          </div>
         </div>
 
         <div class="col-1-2 col-1-2-sm">
         <div class="controls">
           <i class="fa fa-sort"></i>
-          {!! Form::select('gl_code', $gl_code, null, ['class' => 'floatLabel']) !!}
-          {!! Form::label('gl_code', 'GL code') !!}
+          <select class="floatLabel" name="cost_centre">
+              <option value="select">SELECT ONE</option>
+              @foreach($gl_code as $glcode)
+              <option value="{{$glcode->id}}">{{$glcode->gl_code." ".$glcode->gl_name}}</option>
+              @endforeach
+          </select>
+          {!! Form::label('gl_code', 'GL code', ['class' => 'active']) !!}
          </div>
         </div>
 

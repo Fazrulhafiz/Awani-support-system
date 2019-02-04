@@ -45,8 +45,8 @@ class VoucherController extends Controller
      */
     public function create()
     {
-        $cost_centre = DB::table('cost_centre')->pluck('cost_centre', 'id', 'description');
-        $gl_code = DB::table('gl_code')->pluck('gl_code', 'id', 'gl_name');
+        $cost_centre = DB::table('cost_centre')->get();
+        $gl_code = DB::table('gl_code')->get();
         $voucher_no = DB::table('cash_voucher')->max('voucher_no');
         if ($voucher_no <= 3000) {
             $voucher_no = 3001;
