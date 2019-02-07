@@ -1,6 +1,6 @@
 @extends('layouts.welcome')
 
-@extends('finance.layouts.finance')
+@extends('mcr.layouts.mcr')
 
 @section('content')
     <div class="row">

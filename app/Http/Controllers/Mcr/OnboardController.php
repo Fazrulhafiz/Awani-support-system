@@ -35,7 +35,7 @@ class OnboardController extends Controller
         $vouchers = DB::table('cash_voucher')->paginate(10);
         // dd($vouchers);
 
-        return view('finance.dashboard', ['vouchers' => $vouchers]);
+        return view('mcr.dashboard', ['vouchers' => $vouchers]);
     }
 
     /**

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class EmpPosition extends Migration
+class OnboardingType extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class EmpPosition extends Migration
      */
     public function up()
     {
-        Schema::create('emp_position', function (Blueprint $table) {
+        Schema::create('onboarding_type', function (Blueprint $table) {
             $table->increments('id');
             $table->string('description');
             $table->timestamp('created_date')->useCurrent();
@@ -22,12 +22,11 @@ class EmpPosition extends Migration
 
         // Insert default data
         $data = array(
-            array('description'=>'New staff/position'),
-            array('description'=>'Replacement'),
-            array('description'=>'Existing staff'),
+            array('description'=>'requester'),
+            array('description'=>'custodian'),
         );
 
-        DB::table('emp_position')->insert($data);
+        DB::table('onboarding_type')->insert($data);
     }
 
     /**

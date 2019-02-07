@@ -15,16 +15,17 @@ class CustodianStatus extends Migration
     {
         Schema::create('custodian_status', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('status');
+            $table->string('description');
+            $table->integer('need_duration')->default(0)->comment('set to 1 if the status need duration');
             $table->timestamp('created_date')->useCurrent();
             $table->integer('created_by')->default(1);
         });
 
         // Insert default data
         $data = array(
-            array('status'=>'Permanent employee'),
-            array('status'=>'Temporary employee'),
-            array('status'=>'Guest'),
+            array('description'=>'Permanent employee'),
+            array('description'=>'Temporary employee', 'need_duration'=>1),
+            array('description'=>'Guest', 'need_duration'=>1),
         );
 
         DB::table('custodian_status')->insert($data);
@@ -37,6 +38,6 @@ class CustodianStatus extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('custodian_status');
+        //
     }
 }
