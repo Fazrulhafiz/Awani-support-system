@@ -155,22 +155,19 @@ Route::group(['prefix' => 'finance', 'as' => 'finance.', 'namespace' => 'Finance
 });
 
 /**
- * Finance
+ * MCR
  */
 Route::group(['prefix' => 'mcr', 'as' => 'mcr.', 'namespace' => 'Mcr', 'middleware' => 'auth'], function () {
     // Dashboard
     Route::get('/', 'OnboardController@index')->name('mcr');
 
-    Route::get('cash-voucher', 'VoucherController@voucher')->name('cash-voucher');
-    Route::get('cash-voucher/{voucher}/show', 'VoucherController@showvoucher')->name('cash-voucher.show');
+    Route::get('new-request/{request}/edit', 'OnboardController@editvoucher')->name('new-request.edit');
+    Route::post('new-request', 'OnboardController@update')->name('new-request.update');
 
-    Route::get('cash-voucher/{voucher}/edit', 'VoucherController@editvoucher')->name('cash-voucher.edit');
-    Route::post('cash-voucher', 'VoucherController@update')->name('cash-voucher.update');
+    Route::get('new-request', 'OnboardController@create')->name('new-request.create');
+    Route::post('new-request', 'OnboardController@store')->name('new-request.store');
 
-    Route::get('new-voucher', 'VoucherController@create')->name('new-voucher.create');
-    Route::post('new-voucher', 'VoucherController@store')->name('new-voucher.store');
-
-    Route::get('print-voucher/{voucherid}', function($voucherid)
+    Route::get('print-request/{req_id}', function($req_id)
     {
         $voucherdetail = DB::table('cash_voucher')->where('id', '=', $voucherid)->get();
         $cost_centre = DB::table('cost_centre')->where('id', '=', $voucherdetail[0]->cost_centre)->value('cost_centre');

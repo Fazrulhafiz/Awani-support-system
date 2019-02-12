@@ -1,21 +1,17 @@
-.btn-social {
+.btn-add {
   cursor: pointer;
 }
 
-.btn-social {
+.btn-add {
   color: #000;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
   border-radius: 0.2em;
   font-size: 16px;
 }
 
-.btn-social:hover {
+.btn-add:hover {
   color: #fff;
   box-shadow: 0 3px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 13px 0 rgba(0, 0, 0, 0.15);
-}
-
-.btn-whatsapp {
-  background-color: #4bc75a;
 }
 
 body {

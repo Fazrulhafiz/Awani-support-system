@@ -138,9 +138,11 @@ mix.styles([
  |
  */
  mix.scripts([
-     'resources/assets/finance/js/finance.js'
- ], 'public/assets/finance/js/finance.js').version();
+     'resources/assets/finance/js/finance.js',
+     'resources/assets/mcr/js/mcr.js'
+ ], 'public/assets/asa/js/awani.js').version();
 
  mix.styles([
-     'resources/assets/finance/css/finance.css'
- ], 'public/assets/finance/css/finance.css').version();
+     'resources/assets/finance/css/finance.css',
+     'resources/assets/mcr/css/mcr.css'
+ ], 'public/assets/asa/css/awani.css').version();

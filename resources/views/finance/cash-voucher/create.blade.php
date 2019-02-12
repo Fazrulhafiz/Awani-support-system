@@ -1,6 +1,4 @@
-@extends('layouts.welcome')
-
-@extends('finance.layouts.finance')
+@extends('layouts.awani')
 
 @section('content')
     {!! Form::open(['route' => 'finance.new-voucher.store']) !!}

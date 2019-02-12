@@ -27,8 +27,6 @@ class EmpParticulars extends Migration
             $table->integer('onboarding_type');
             $table->timestamp('created_date')->useCurrent();
             $table->integer('created_by')->default(1);
-
-            $table->foreign('onboarding_type')->references('id')->on('onboarding_type');
         });
     }
 

@@ -1,19 +1,19 @@
-@extends('layouts.welcome')
-
-@extends('mcr.layouts.finance')
+@extends('layouts.awani')
 
 @section('content')
+    {!! Form::open(['route' => 'mcr.new-request.store']) !!}
+
     <div class="po-form">
       <div id="non-issued-editable">
-        <h1>Purchase Order</h1>
+        <h1>IT Division</h1>
         <div class="break"></div>
         <table class="po-general-table">
           <tr>
-            <td class="big-text" colspan=2>P/O Number <span data-input-name="po_number">TBD</span></td>
+            <td class="big-text" colspan=2>REQUEST <span data-input-name="po_number">INFO</span></td>
             <td class="big-text text-right" colspan=2>Rev. No <span data-input-name="revision">0</span></td>
           </tr>
           <tr>
-            <td class="label">Project</td>
+            <td class="label">Type of request</td>
             <td><select data-input-name="project_id"><option value="">TCP0234</option></select></td>
             <td class="label">Issued By</td>
             <td><input data-input-name="issued_by" type="text" class="table-field" value="Craig Dykstra" disabled /></td>
@@ -286,4 +286,6 @@
         <div class="break"></div>
       </div>
     </div>
+
+    {!! Form::close() !!}
 @endsection

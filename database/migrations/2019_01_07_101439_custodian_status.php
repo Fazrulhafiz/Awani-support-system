@@ -13,17 +13,19 @@ class CustodianStatus extends Migration
      */
     public function up()
     {
-        Schema::create('custodian_status', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('description');
-            $table->integer('need_duration')->default(0)->comment('set to 1 if the status need duration');
-            $table->timestamp('created_date')->useCurrent();
-            $table->integer('created_by')->default(1);
-        });
+        if (!Schema::hasTable('custodian_status')) {
+            Schema::create('custodian_status', function (Blueprint $table) {
+                $table->increments('id');
+                $table->string('description');
+                $table->integer('need_duration')->default(0)->comment('set to 1 if the status need duration');
+                $table->timestamp('created_date')->useCurrent();
+                $table->integer('created_by')->default(1);
+            });
+        }
 
         // Insert default data
         $data = array(
-            array('description'=>'Permanent employee'),
+            array('description'=>'Permanent employee', 'need_duration'=>0),
             array('description'=>'Temporary employee', 'need_duration'=>1),
             array('description'=>'Guest', 'need_duration'=>1),
         );

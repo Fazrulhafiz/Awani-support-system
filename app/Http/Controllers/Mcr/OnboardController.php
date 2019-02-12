@@ -32,10 +32,10 @@ class OnboardController extends Controller
      */
     public function index()
     {
-        $vouchers = DB::table('cash_voucher')->paginate(10);
+        $vouchers = DB::table('onboard_in')->paginate(10);
         // dd($vouchers);
 
-        return view('mcr.dashboard', ['vouchers' => $vouchers]);
+        return view('mcr.dashboard', ['req_id' => $vouchers]);
     }
 
     /**
@@ -45,16 +45,10 @@ class OnboardController extends Controller
      */
     public function create()
     {
-        $cost_centre = DB::table('cost_centre')->pluck('cost_centre', 'id', 'description');
-        $gl_code = DB::table('gl_code')->pluck('gl_code', 'id', 'gl_name');
-        $voucher_no = DB::table('cash_voucher')->max('voucher_no');
-        if ($voucher_no <= 3000) {
-            $voucher_no = 3001;
-        } else {
-            $voucher_no += 1;
-        }
+        $request_type = DB::table('request_type')->pluck('description', 'id');
+        $emp_position = DB::table('emp_position')->pluck('description', 'id');
 
-        return view('finance.cash-voucher.create', ['cost_centre' => $cost_centre, 'gl_code' => $gl_code, 'voucher_no' => $voucher_no]);
+        return view('mcr.onboarding.create', ['request_type' => $request_type, 'emp_position' => $emp_position]);
     }
 
     public function store(Request $request)

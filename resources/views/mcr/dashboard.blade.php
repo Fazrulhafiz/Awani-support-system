@@ -1,49 +1,41 @@
-@extends('layouts.welcome')
-
-@extends('mcr.layouts.mcr')
+@extends('layouts.awani')
 
 @section('content')
     <div class="row">
         <div class="col col-xs-6 col-sm-4 col-md-3 p-2">
-            <a href="{{ url('/finance/new-voucher') }}" class="btn btn-social btn-whatsapp"><i class="fas fa-plus"></i> New voucher</a>
+            <a href="{{ url('/mcr/new-request') }}" class="btn btn-add"><i class="fas fa-plus"></i> New request</a>
         </div>
     <br><br>
     </div>
-    <div class="row">
-        <table class="rwd-table" cellspacing="0" width="100%">
+    <div class="po-form">
+      <div id="non-issued-editable">
+        <div class="consumables-section">
+          <div class="break"></div>
+          <h2>Requested services</h2>
+          <table class="consumables">
             <thead>
-            <tr>
-                <th>@sortablelink('voucher_no', __('views.admin.finance.dashboard.table_header_0'),['page' => $vouchers->currentPage()])</th>
-                <th>@sortablelink('pay_to',  __('views.admin.finance.dashboard.table_header_1'),['page' => $vouchers->currentPage()])</th>
-                <th>@sortablelink('created_date', __('views.admin.finance.dashboard.table_header_2'),['page' => $vouchers->currentPage()])</th>
-                <th>Actions</th>
-            </tr>
+              <tr>
+                <td>Item</td><td>Qty</td><td>Description</td><td>Unit Price</td><td>Extended</td><td class="delete-td"></td>
+              </tr>
             </thead>
             <tbody>
-                @foreach($vouchers as $voucher)
-                <tr>
-                    <td>{{ $voucher->voucher_no }}</td>
-                    <td>{{ $voucher->pay_to }}</td>
-                    <td>{{ \Carbon\Carbon::parse($voucher->created_date)->format('d/m/Y') }}</td>
-                    <td>
-                        <!-- <a href="{{ url('finance/cash-voucher/'.$voucher->id.'/show') }}"><i class="far fa-eye"></i></a> &nbsp; -->
-                        <a href="{{ url('finance/cash-voucher/'.$voucher->id.'/edit') }}"><i class="far fa-edit"></i></a> &nbsp;
-                        <a href="{{ url('finance/print-voucher/'.$voucher->id) }}" target="_blank"><i class="fas fa-print"></i></a> &nbsp;
-                        {{--@if(!$voucher->hasRole('administrator'))--}}
-                            {{--<button class="btn btn-xs btn-danger user_destroy"--}}
-                                    {{--data-url="{{ route('admin.users.destroy', [$voucher->id]) }}" data-toggle="tooltip" data-placement="top" data-title="{{ __('views.admin.users.index.delete') }}">--}}
-                                {{--<i class="fa fa-trash"></i>--}}
-                            {{--</button>--}}
-                        {{--@endif--}}
-                    </td>
-                </tr>
-                @endforeach
+              <tr>
+                <td data-field="item" class="text-center">1</td>
+                <td><input data-field="quantity" type="text" class="table-field" placeholder="Qty" /></td>
+                <td><div data-field="description" contenteditable data-ph="Description"></div></td>
+                <td><input data-field="unit-price" type="text" class="table-field text-right" placeholder="Unit Price" /></td>
+                <td><input data-field="extended" type="text" class="table-field text-right" placeholder="Extended" disabled /></td>
+                <td class="delete-td"><div class="delete-row-button"></div></td>
+              </tr>
+              <tr class="line"><td></td><td></td><td></td><td></td><td></td><td></td></tr>
             </tbody>
-        </table>
-    </div>
-    <div class="row">
-        {{ $vouchers->links() }}
-    </div>
+          </table>
+        </div>
+        <div class="row">
+            {{ $req_id->links() }}
+        </div>
 
-    <div id="page-content" class="page-content">Page <?php print (isset($_GET["page"]) ? $_GET["page"] : '1'); ?></div>
+        <div id="page-content" class="page-content">Page <?php print (isset($_GET["page"]) ? $_GET["page"] : '1'); ?></div>
+      </div>
+  </div>
 @endsection
