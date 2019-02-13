@@ -47,43 +47,54 @@ class OnboardController extends Controller
     {
         $request_type = DB::table('request_type')->pluck('description', 'id');
         $emp_position = DB::table('emp_position')->pluck('description', 'id');
+        $custodian_status = DB::table('custodian_status')->get();
+        $services_type = DB::table('services_type')->get();
+        $cost_centre = DB::table('cost_centre')->get();
 
-        return view('mcr.onboarding.create', ['request_type' => $request_type, 'emp_position' => $emp_position]);
+        return view('mcr.onboarding.create', ['cost_centre' => $cost_centre, 'request_type' => $request_type, 'emp_position' => $emp_position, 'custodian_status' => $custodian_status, 'services_type' => $services_type]);
     }
 
     public function store(Request $request)
     {
-        DB::table('cash_voucher')->insert([
-            'voucher_no'  =>  $request->get('voucher_no'),
-            'pay_to'  =>  $request->get('pay_to'),
-            'payment_for'  =>  $request->get('payment_for'),
-            'ringgit'  =>  $request->get('ringgit'),
-            'rm'  =>  $request->get('rm'),
-            'cost_centre'  =>  $request->get('cost_centre'),
-            'gl_code'  =>  $request->get('gl_code'),
+        DB::table('onboard_in')->insert([
+            'req_type'  =>  $request->get('req_type'),
+            'emp_position'  =>  $request->get('emp_position'),
+            'custodian_status'  =>  $request->get('custodian_status'),
+            'custodian_duration'  =>  $request->get('custodian_duration'),
+            'custodian_id'  =>  $request->get('custodian_id'),
+            'requester_id'  =>  $request->get('requester_id'),
+            'services_id'  =>  $request->get('services_id'),
+            'justification'  =>  $request->get('justification'),
+            'user_manager'  =>  $request->get('user_manager'),
+            'hod_id'  =>  $request->get('hod_id'),
+            'head_it'  =>  $request->get('head_it'),
+            'itd_hod'  =>  $request->get('itd_hod'),
+            'itd_crm'  =>  $request->get('itd_crm'),
         ]);
-        return redirect('finance')->with('key', 'Your voucher has been created!');
+        return redirect('mcr')->with('key', 'Your request has been created!');
     }
 
     public function update(Request $request)
     {
-        DB::table('cash_voucher')
-        ->where('voucher_no', $request->get('voucher_no'))
+        DB::table('onboard_in')
+        ->where('id', $request->get('id'))
         ->update([
-            'pay_to'  =>  $request->get('pay_to'),
-            'payment_for'  =>  $request->get('payment_for'),
-            'ringgit'  =>  $request->get('ringgit'),
-            'rm'  =>  $request->get('rm'),
-            'cost_centre'  =>  $request->get('cost_centre'),
-            'gl_code'  =>  $request->get('gl_code'),
+          'req_type'  =>  $request->get('req_type'),
+          'emp_position'  =>  $request->get('emp_position'),
+          'custodian_status'  =>  $request->get('custodian_status'),
+          'custodian_duration'  =>  $request->get('custodian_duration'),
+          'custodian_id'  =>  $request->get('custodian_id'),
+          'requester_id'  =>  $request->get('requester_id'),
+          'services_id'  =>  $request->get('services_id'),
+          'justification'  =>  $request->get('justification'),
+          'user_manager'  =>  $request->get('user_manager'),
+          'hod_id'  =>  $request->get('hod_id'),
+          'head_it'  =>  $request->get('head_it'),
+          'itd_hod'  =>  $request->get('itd_hod'),
+          'itd_crm'  =>  $request->get('itd_crm'),
         ]);
 
-        return redirect('finance')->with('key', 'Your voucher has been updated!');
-    }
-
-    public function showvoucher($voucher)
-    {
-        return view('finance.cash-voucher.show', ['id' => $voucher]);
+        return redirect('mcr')->with('key', 'Your request has been updated!');
     }
 
     public function editvoucher($voucher)
