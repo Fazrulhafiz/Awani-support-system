@@ -57,6 +57,7 @@ class OnboardController extends Controller
     public function store(Request $request)
     {
         $custodian_id = DB::table('emp_particulars')->where('employee_id', $request->get('custodian_id'));
+        $requester_id = DB::table('emp_particulars')->where('employee_id', $request->get('requester_id'));
 
         DB::table('onboard_in')->insert([
             'req_type'  =>  $request->get('req_type'),
@@ -76,7 +77,7 @@ class OnboardController extends Controller
 
         DB::table('emp_particulars')->insert([
         ]);
-        
+
         return redirect('mcr')->with('key', 'Your request has been created!');
     }
 

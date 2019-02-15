@@ -15,16 +15,16 @@
           <tr>
             <td class="label">Type of request</td>
             <td>
-                {!! Form::checkbox('req_type', 'type 1', null) !!} {{ 'type 1' }}
-                {!! Form::checkbox('req_type', 'type 2', null) !!} {{ 'type 2' }}
+                {!! Form::radio('req_type', 'type 1', null) !!} {{ 'type 1' }}
+                {!! Form::radio('req_type', 'type 2', null) !!} {{ 'type 2' }}
             </td>
           </tr>
           <tr>
             <td class="label">Position</td>
             <td>
-                {!! Form::checkbox('emp_position', 'type 1', null) !!} {{ 'type 1' }}
-                {!! Form::checkbox('emp_position', 'type 2', null) !!} {{ 'type 2' }}
-                {!! Form::checkbox('emp_position', 'type 3', null) !!} {{ 'type 3' }}
+                {!! Form::radio('emp_position', 'type 1', null) !!} {{ 'type 1' }}
+                {!! Form::radio('emp_position', 'type 2', null) !!} {{ 'type 2' }}
+                {!! Form::radio('emp_position', 'type 3', null) !!} {{ 'type 3' }}
             </td>
           </tr>
         </table>
@@ -36,9 +36,9 @@
           <tr>
             <td class="label">Custodian status</td>
             <td>
-              {!! Form::checkbox('custodian_status', 'type 1', null) !!} {{ 'type 1' }}
-              {!! Form::checkbox('custodian_status', 'type 2', null) !!} {{ 'type 2' }}
-              {!! Form::checkbox('custodian_status', 'type 3', null) !!} {{ 'type 3' }}
+              {!! Form::radio('custodian_status', 'type 1', null) !!} {{ 'type 1' }}
+              {!! Form::radio('custodian_status', 'type 2', null) !!} {{ 'type 2' }}
+              {!! Form::radio('custodian_status', 'type 3', null) !!} {{ 'type 3' }}
             </td>
             <td class="label">Duration</td>
             <td>
@@ -64,27 +64,27 @@
           <tr>
             <td class="label">Department &amp; Division</td>
             <td>
-              {!! Form::text('custodian_name', null, ['class' => 'table-field', 'data-input-name' => 'custodian_name']) !!}
+              {!! Form::text('custodian_dnd', null, ['class' => 'table-field', 'data-input-name' => 'custodian_dnd']) !!}
             </td>
             <td class="label">Location</td>
             <td>
-              {!! Form::text('custodian_name', null, ['class' => 'table-field', 'data-input-name' => 'custodian_name']) !!}
+              {!! Form::text('custodian_location', null, ['class' => 'table-field', 'data-input-name' => 'custodian_location']) !!}
             </td>
           </tr>
           <tr>
             <td class="label">Tel / Ext number</td>
             <td>
-              {!! Form::text('custodian_name', null, ['class' => 'table-field', 'data-input-name' => 'custodian_name']) !!}
+              {!! Form::text('custodian_number', null, ['class' => 'table-field', 'data-input-name' => 'custodian_number']) !!}
             </td>
             <td class="label">Network login ID</td>
             <td>
-              {!! Form::text('custodian_name', null, ['class' => 'table-field', 'data-input-name' => 'custodian_name']) !!}
+              {!! Form::text('custodian_networkid', null, ['class' => 'table-field', 'data-input-name' => 'custodian_networkid']) !!}
             </td>
           </tr>
           <tr>
             <td colspan=2 class="label">Cost centre</td>
             <td colspan=2>
-              <select data-field="period" name="cost_centre">
+              <select data-field="period" name="custodian_cost_centre">
                   <option value="select">SELECT ONE</option>
                   @foreach($cost_centre as $cost)
                   <option value="{{$cost->id}}">{{$cost->cost_centre." ".$cost->description}}</option>
@@ -101,43 +101,43 @@
           <tr>
             <td class="label">Name</td>
             <td colspan=3>
-              {!! Form::text('requester_name', null, ['class' => 'table-field', 'data-input-name' => 'custodian_name']) !!}
+              {!! Form::text('requester_name', null, ['class' => 'table-field', 'data-input-name' => 'requester_name']) !!}
             </td>
           </tr>
           <tr>
             <td class="label">Employee ID</td>
             <td>
-              {!! Form::text('requester_name', null, ['class' => 'table-field', 'data-input-name' => 'custodian_name']) !!}
+              {!! Form::text('requester_id', null, ['class' => 'table-field', 'data-input-name' => 'requester_id']) !!}
             </td>
             <td class="label">Designation</td>
             <td>
-              {!! Form::text('requester_name', null, ['class' => 'table-field', 'data-input-name' => 'custodian_name']) !!}
+              {!! Form::text('requester_designation', null, ['class' => 'table-field', 'data-input-name' => 'requester_designation']) !!}
             </td>
           </tr>
           <tr>
             <td class="label">Department &amp; Division</td>
             <td>
-              {!! Form::text('requester_name', null, ['class' => 'table-field', 'data-input-name' => 'custodian_name']) !!}
+              {!! Form::text('requester_dnd', null, ['class' => 'table-field', 'data-input-name' => 'requester_dnd']) !!}
             </td>
             <td class="label">Location</td>
             <td>
-              {!! Form::text('requester_name', null, ['class' => 'table-field', 'data-input-name' => 'custodian_name']) !!}
+              {!! Form::text('requester_location', null, ['class' => 'table-field', 'data-input-name' => 'requester_location']) !!}
             </td>
           </tr>
           <tr>
             <td class="label">Tel / Ext number</td>
             <td>
-              {!! Form::text('requester_name', null, ['class' => 'table-field', 'data-input-name' => 'custodian_name']) !!}
+              {!! Form::text('requester_number', null, ['class' => 'table-field', 'data-input-name' => 'requester_number']) !!}
             </td>
             <td class="label">Network login ID</td>
             <td>
-              {!! Form::text('requester_name', null, ['class' => 'table-field', 'data-input-name' => 'custodian_name']) !!}
+              {!! Form::text('requester_networkid', null, ['class' => 'table-field', 'data-input-name' => 'requester_networkid']) !!}
             </td>
           </tr>
           <tr>
             <td colspan=2 class="label">Cost centre</td>
             <td colspan=2>
-              <select data-field="period" name="cost_centre">
+              <select data-field="period" name="requester_cost_centre">
                   <option value="select">SELECT ONE</option>
                   @foreach($cost_centre as $cost)
                   <option value="{{$cost->id}}">{{$cost->cost_centre." ".$cost->description}}</option>
