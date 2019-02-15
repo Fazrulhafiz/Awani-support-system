@@ -22,9 +22,9 @@
           <tr>
             <td class="label">Position</td>
             <td>
-                {!! Form::checkbox('req_type', 'type 1', null) !!} {{ 'type 1' }}
-                {!! Form::checkbox('req_type', 'type 2', null) !!} {{ 'type 2' }}
-                {!! Form::checkbox('req_type', 'type 3', null) !!} {{ 'type 3' }}
+                {!! Form::checkbox('emp_position', 'type 1', null) !!} {{ 'type 1' }}
+                {!! Form::checkbox('emp_position', 'type 2', null) !!} {{ 'type 2' }}
+                {!! Form::checkbox('emp_position', 'type 3', null) !!} {{ 'type 3' }}
             </td>
           </tr>
         </table>
@@ -35,10 +35,14 @@
           </tr>
           <tr>
             <td class="label">Custodian status</td>
-            <td colspan=3>
-              {!! Form::checkbox('req_type', 'type 1', null) !!} {{ 'type 1' }}
-              {!! Form::checkbox('req_type', 'type 2', null) !!} {{ 'type 2' }}
-              {!! Form::checkbox('req_type', 'type 3', null) !!} {{ 'type 3' }}
+            <td>
+              {!! Form::checkbox('custodian_status', 'type 1', null) !!} {{ 'type 1' }}
+              {!! Form::checkbox('custodian_status', 'type 2', null) !!} {{ 'type 2' }}
+              {!! Form::checkbox('custodian_status', 'type 3', null) !!} {{ 'type 3' }}
+            </td>
+            <td class="label">Duration</td>
+            <td>
+                {!! Form::text('custodian_duration', null, ['class' => 'table-field', 'data-input-name' => 'custodian_duration']) !!}
             </td>
           </tr>
           <tr>
@@ -48,16 +52,34 @@
             </td>
           </tr>
           <tr>
-            <td class="label">Employee ID</td><td><input data-input-name="vendor_phone" type="text" class="table-field" /></td>
-            <td class="label">Designation</td><td><input data-input-name="vendor_fax" type="text" class="table-field" /></td>
+            <td class="label">Employee ID</td>
+            <td>
+              {!! Form::text('custodian_id', null, ['class' => 'table-field', 'data-input-name' => 'custodian_id']) !!}
+            </td>
+            <td class="label">Designation</td>
+            <td>
+              {!! Form::text('custodian_designation', null, ['class' => 'table-field', 'data-input-name' => 'custodian_designation']) !!}
+            </td>
           </tr>
           <tr>
-            <td class="label">Department &amp; Division</td><td><input data-input-name="vendor_phone" type="text" class="table-field" /></td>
-            <td class="label">Location</td><td><input data-input-name="vendor_fax" type="text" class="table-field" /></td>
+            <td class="label">Department &amp; Division</td>
+            <td>
+              {!! Form::text('custodian_name', null, ['class' => 'table-field', 'data-input-name' => 'custodian_name']) !!}
+            </td>
+            <td class="label">Location</td>
+            <td>
+              {!! Form::text('custodian_name', null, ['class' => 'table-field', 'data-input-name' => 'custodian_name']) !!}
+            </td>
           </tr>
           <tr>
-            <td class="label">Tel / Ext number</td><td><input data-input-name="vendor_phone" type="text" class="table-field" /></td>
-            <td class="label">Network login ID</td><td><input data-input-name="vendor_fax" type="text" class="table-field" /></td>
+            <td class="label">Tel / Ext number</td>
+            <td>
+              {!! Form::text('custodian_name', null, ['class' => 'table-field', 'data-input-name' => 'custodian_name']) !!}
+            </td>
+            <td class="label">Network login ID</td>
+            <td>
+              {!! Form::text('custodian_name', null, ['class' => 'table-field', 'data-input-name' => 'custodian_name']) !!}
+            </td>
           </tr>
           <tr>
             <td colspan=2 class="label">Cost centre</td>
@@ -79,20 +101,38 @@
           <tr>
             <td class="label">Name</td>
             <td colspan=3>
-              {!! Form::text('custodian_name', null, ['class' => 'table-field', 'data-input-name' => 'custodian_name']) !!}
+              {!! Form::text('requester_name', null, ['class' => 'table-field', 'data-input-name' => 'custodian_name']) !!}
             </td>
           </tr>
           <tr>
-            <td class="label">Employee ID</td><td><input data-input-name="vendor_phone" type="text" class="table-field" /></td>
-            <td class="label">Designation</td><td><input data-input-name="vendor_fax" type="text" class="table-field" /></td>
+            <td class="label">Employee ID</td>
+            <td>
+              {!! Form::text('requester_name', null, ['class' => 'table-field', 'data-input-name' => 'custodian_name']) !!}
+            </td>
+            <td class="label">Designation</td>
+            <td>
+              {!! Form::text('requester_name', null, ['class' => 'table-field', 'data-input-name' => 'custodian_name']) !!}
+            </td>
           </tr>
           <tr>
-            <td class="label">Department &amp; Division</td><td><input data-input-name="vendor_phone" type="text" class="table-field" /></td>
-            <td class="label">Location</td><td><input data-input-name="vendor_fax" type="text" class="table-field" /></td>
+            <td class="label">Department &amp; Division</td>
+            <td>
+              {!! Form::text('requester_name', null, ['class' => 'table-field', 'data-input-name' => 'custodian_name']) !!}
+            </td>
+            <td class="label">Location</td>
+            <td>
+              {!! Form::text('requester_name', null, ['class' => 'table-field', 'data-input-name' => 'custodian_name']) !!}
+            </td>
           </tr>
           <tr>
-            <td class="label">Tel / Ext number</td><td><input data-input-name="vendor_phone" type="text" class="table-field" /></td>
-            <td class="label">Network login ID</td><td><input data-input-name="vendor_fax" type="text" class="table-field" /></td>
+            <td class="label">Tel / Ext number</td>
+            <td>
+              {!! Form::text('requester_name', null, ['class' => 'table-field', 'data-input-name' => 'custodian_name']) !!}
+            </td>
+            <td class="label">Network login ID</td>
+            <td>
+              {!! Form::text('requester_name', null, ['class' => 'table-field', 'data-input-name' => 'custodian_name']) !!}
+            </td>
           </tr>
           <tr>
             <td colspan=2 class="label">Cost centre</td>
@@ -109,9 +149,9 @@
         <div class="break"></div>
         <h2>Standard computing / telecommunication / network services</h2>
         <div class="file-box">
-          {!! Form::checkbox('req_type', 'type 1', null) !!} {{ 'type 1' }}
-          {!! Form::checkbox('req_type', 'type 2', null) !!} {{ 'type 2' }}
-          {!! Form::checkbox('req_type', 'type 3', null) !!} {{ 'type 3' }}
+          @foreach($services_type as $service_type)
+          {!! Form::checkbox('services', $service_type->description, null) !!} {{ $service_type->description }}
+          @endforeach
         </div>
         <div class="notes-section">
           <div class="break"></div>

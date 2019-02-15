@@ -56,6 +56,8 @@ class OnboardController extends Controller
 
     public function store(Request $request)
     {
+        $custodian_id = DB::table('emp_particulars')->where('employee_id', $request->get('custodian_id'));
+
         DB::table('onboard_in')->insert([
             'req_type'  =>  $request->get('req_type'),
             'emp_position'  =>  $request->get('emp_position'),
@@ -71,6 +73,10 @@ class OnboardController extends Controller
             'itd_hod'  =>  $request->get('itd_hod'),
             'itd_crm'  =>  $request->get('itd_crm'),
         ]);
+
+        DB::table('emp_particulars')->insert([
+        ]);
+        
         return redirect('mcr')->with('key', 'Your request has been created!');
     }
 

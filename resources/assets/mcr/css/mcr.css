@@ -340,6 +340,7 @@ table .label {
   min-height: 125px;
   border: 1px solid #ccc;
   margin-bottom: 10px;
+  text-align: left;
 }
 
 .file-box {
