@@ -45,8 +45,8 @@ class OnboardController extends Controller
      */
     public function create()
     {
-        $request_type = DB::table('request_type')->pluck('description', 'id');
-        $emp_position = DB::table('emp_position')->pluck('description', 'id');
+        $request_type = DB::table('request_type')->get();
+        $emp_position = DB::table('emp_position')->get();
         $custodian_status = DB::table('custodian_status')->get();
         $services_type = DB::table('services_type')->get();
         $cost_centre = DB::table('cost_centre')->get();

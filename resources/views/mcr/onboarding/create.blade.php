@@ -15,16 +15,17 @@
           <tr>
             <td class="label">Type of request</td>
             <td>
-                {!! Form::radio('req_type', 'type 1', null) !!} {{ 'type 1' }}
-                {!! Form::radio('req_type', 'type 2', null) !!} {{ 'type 2' }}
+              @foreach($request_type as $request)
+              {!! Form::checkbox('request_type', $request->id, null) !!} {{ $request->description }}
+              @endforeach
             </td>
           </tr>
           <tr>
             <td class="label">Position</td>
             <td>
-                {!! Form::radio('emp_position', 'type 1', null) !!} {{ 'type 1' }}
-                {!! Form::radio('emp_position', 'type 2', null) !!} {{ 'type 2' }}
-                {!! Form::radio('emp_position', 'type 3', null) !!} {{ 'type 3' }}
+              @foreach($emp_position as $position)
+              {!! Form::checkbox('emp_position', $position->id, null) !!} {{ $position->description }}
+              @endforeach
             </td>
           </tr>
         </table>
@@ -36,9 +37,9 @@
           <tr>
             <td class="label">Custodian status</td>
             <td>
-              {!! Form::radio('custodian_status', 'type 1', null) !!} {{ 'type 1' }}
-              {!! Form::radio('custodian_status', 'type 2', null) !!} {{ 'type 2' }}
-              {!! Form::radio('custodian_status', 'type 3', null) !!} {{ 'type 3' }}
+              @foreach($custodian_status as $custodian_status)
+              {!! Form::radio('custodian_status', $custodian_status->id, null) !!} {{ $custodian_status->description }}
+              @endforeach
             </td>
             <td class="label">Duration</td>
             <td>
@@ -150,7 +151,7 @@
         <h2>Standard computing / telecommunication / network services</h2>
         <div class="file-box">
           @foreach($services_type as $service_type)
-          {!! Form::checkbox('services', $service_type->description, null) !!} {{ $service_type->description }}
+          {!! Form::checkbox('services', $service_type->id, null) !!} {{ $service_type->description }}
           @endforeach
         </div>
         <div class="notes-section">
