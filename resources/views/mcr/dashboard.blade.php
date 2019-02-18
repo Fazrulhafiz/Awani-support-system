@@ -15,7 +15,7 @@
           <table class="consumables">
             <thead>
               <tr>
-                <td>Item</td><td>Qty</td><td>Description</td><td>Unit Price</td><td>Extended</td><td class="delete-td"></td>
+                <td>Item</td><td>Request Type</td><td>Reason</td><td>Unit Price</td><td>Status</td><td class="delete-td"></td>
               </tr>
             </thead>
             <tbody>

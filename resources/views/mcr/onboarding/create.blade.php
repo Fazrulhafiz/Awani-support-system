@@ -150,9 +150,14 @@
         <div class="break"></div>
         <h2>Standard computing / telecommunication / network services</h2>
         <div class="file-box">
-          @foreach($services_type as $service_type)
-          {!! Form::checkbox('services', $service_type->id, null) !!} {{ $service_type->description }}
-          @endforeach
+          <table>
+            <?php $x = 0; ?>
+            <tr>
+            @foreach($services_type as $service_type)
+            <td>{!! Form::checkbox('services', $service_type->id, null) !!} {{ $service_type->description }}</td>
+            <?php $x += 1; if (($x % 3) == 0) { echo "</tr>"; } ?>
+            @endforeach
+          </table>
         </div>
         <div class="notes-section">
           <div class="break"></div>
