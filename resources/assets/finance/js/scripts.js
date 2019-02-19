@@ -1,4 +1,4 @@
-$(document).ready(function($) {
+// $(document).ready(function($) {
     // const numInputs = document.querySelectorAll('input[type=number]');
     //
     // numInputs.forEach(function (input) {
@@ -89,6 +89,6 @@ $(document).ready(function($) {
             words_string = words_string.split("  ").join(" ");
         }
         // return words_string;
-        document.getElementById('text_amount').value = words_string + "Only";
+        $('#ringgit').val(words_string + "Only");
     }
-}
+// });

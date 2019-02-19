@@ -16,17 +16,16 @@
           {!! Form::label('payment_for', 'Payment for') !!}
         </div>
           <div class="grid">
-            <div class="col-2-3">
-              <div class="controls">
-               {!! Form::text('ringgit', null, ['class' => 'floatLabel', 'id' => 'text']) !!}
-               {!! Form::label('ringgit', 'Ringgit') !!}
-              </div>
-            </div>
             <div class="col-1-3">
               <div class="controls">
-                {!! Form::number('rm', null, ['class' => 'floatLabel translateNumber']) !!}
-                <!-- , 'onkeyup' => "convertNumberToWords(this.value)" -->
+                {!! Form::number('rm', null, ['class' => 'floatLabel', 'onkeyup' => 'convertNumberToWords(this.value)']) !!}
                 {!! Form::label('rm', 'MYR') !!}
+              </div>
+            </div>
+            <div class="col-2-3">
+              <div class="controls">
+               {!! Form::text('ringgit', null, ['class' => 'floatLabel', 'id' => 'ringgit', 'readonly' => 'readonly']) !!}
+               {!! Form::label('ringgit', 'Ringgit', ['class' => 'active']) !!}
               </div>
             </div>
           </div>
@@ -49,24 +48,26 @@
         </div>
 
         <div class="col-1-2 col-1-2-sm">
-        <div class="controls">
-          <i class="fa fa-sort"></i>
-          <select class="floatLabel" name="gl_code">
-              <option value="select">SELECT ONE</option>
+          <div class="controls">
+            <table>
+              <tr><td>&nbsp;</td></tr>
               @foreach($gl_code as $glcode)
-              <option value="{{$glcode->id}}">{{$glcode->gl_code." ".$glcode->gl_name}}</option>
+              <tr>
+              <td>{!! Form::checkbox('gl_code', $glcode->id, null) !!} {{ $glcode->gl_code." ".$glcode->gl_name }}</td>
+              </tr>
               @endforeach
-          </select>
-          {!! Form::label('gl_code', 'GL code', ['class' => 'active']) !!}
-         </div>
+              {!! Form::label('gl_code', 'GL code', ['class' => 'active']) !!}
+            </table>
+
+          </div>
         </div>
 
-         </div>
-          <div class="grid">
-                {!! Form::submit('Submit', ['class' => 'col-1-4']) !!}
-                <a class="col-1-4" href="{{ url('/finance') }}">Cancel</a>
-          </div>
-      </div> <!-- /.form-group -->
+      </div>
+      <div class="grid">
+            {!! Form::submit('Submit', ['class' => 'col-1-4']) !!}
+            <a class="col-1-4" href="{{ url('/finance') }}">Cancel</a>
+      </div>
+    </div> <!-- /.form-group -->
 
     {!! Form::close() !!}
 @endsection

@@ -16,16 +16,16 @@
           {!! Form::label('payment_for', 'Payment for', ['class' => 'active']) !!}
         </div>
           <div class="grid">
-            <div class="col-2-3">
-              <div class="controls">
-               {!! Form::text('ringgit', $voucherdetail[0]->ringgit, ['class' => 'floatLabel']) !!}
-               {!! Form::label('ringgit', 'Ringgit', ['class' => 'active']) !!}
-              </div>
-            </div>
             <div class="col-1-3">
               <div class="controls">
-                {!! Form::number('rm', $voucherdetail[0]->rm, ['class' => 'floatLabel']) !!}
+                {!! Form::number('rm', $voucherdetail[0]->rm, ['class' => 'floatLabel', 'onkeyup' => 'convertNumberToWords(this.value)']) !!}
                 {!! Form::label('rm', 'MYR', ['class' => 'active']) !!}
+              </div>
+            </div>
+            <div class="col-2-3">
+              <div class="controls">
+               {!! Form::text('ringgit', $voucherdetail[0]->ringgit, ['class' => 'floatLabel', 'id' => 'ringgit', 'readonly' => 'readonly']) !!}
+               {!! Form::label('ringgit', 'Ringgit', ['class' => 'active']) !!}
               </div>
             </div>
           </div>
