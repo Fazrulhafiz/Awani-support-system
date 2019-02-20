@@ -7,39 +7,37 @@
         </div>
     <br><br>
     </div>
-    <div class="row">
-        <table class="rwd-table" cellspacing="0" width="100%">
+    <div class="table-responsive">
+        <table class="table table-hover" width="100%">
             <thead>
             <tr>
-                <th>@sortablelink('voucher_no', __('views.admin.finance.dashboard.table_header_0'),['page' => $vouchers->currentPage()])</th>
-                <th>@sortablelink('pay_to',  __('views.admin.finance.dashboard.table_header_1'),['page' => $vouchers->currentPage()])</th>
-                <th>@sortablelink('created_date', __('views.admin.finance.dashboard.table_header_2'),['page' => $vouchers->currentPage()])</th>
-                <th>Actions</th>
+              <th scope="col">@sortablelink('voucher_no', __('views.admin.finance.dashboard.table_header_0'),['page' => $vouchers->currentPage()])</th>
+              <th scope="col">@sortablelink('pay_to',  __('views.admin.finance.dashboard.table_header_1'),['page' => $vouchers->currentPage()])</th>
+              <th scope="col">@sortablelink('created_date', __('views.admin.finance.dashboard.table_header_2'),['page' => $vouchers->currentPage()])</th>
+              <th scope="col">Actions</th>
             </tr>
             </thead>
             <tbody>
                 @foreach($vouchers as $voucher)
                 <tr>
-                    <td>PCV <?php print sprintf("%05d", $voucher->voucher_no); ?></td>
-                    <td>{{ $voucher->pay_to }}</td>
-                    <td>{{ \Carbon\Carbon::parse($voucher->created_date)->format('d/m/Y') }}</td>
-                    <td>
-                        <!-- <a href="{{ url('finance/cash-voucher/'.$voucher->id.'/show') }}"><i class="far fa-eye"></i></a> &nbsp; -->
-                        <a href="{{ url('finance/cash-voucher/'.$voucher->id.'/edit') }}"><i class="far fa-edit"></i></a> &nbsp;
-                        <a href="{{ url('finance/print-voucher/'.$voucher->id) }}" target="_blank"><i class="fas fa-print"></i></a> &nbsp;
-                        {{--@if(!$voucher->hasRole('administrator'))--}}
-                            {{--<button class="btn btn-xs btn-danger user_destroy"--}}
-                                    {{--data-url="{{ route('admin.users.destroy', [$voucher->id]) }}" data-toggle="tooltip" data-placement="top" data-title="{{ __('views.admin.users.index.delete') }}">--}}
-                                {{--<i class="fa fa-trash"></i>--}}
-                            {{--</button>--}}
-                        {{--@endif--}}
-                    </td>
+                  <td>PCV <?php print sprintf("%05d", $voucher->voucher_no); ?></td>
+                  <td>{{ $voucher->pay_to }}</td>
+                  <td>{{ \Carbon\Carbon::parse($voucher->created_date)->format('d/m/Y') }}</td>
+                  <td>
+                    <!-- <a href="{{ url('finance/cash-voucher/'.$voucher->id.'/show') }}"><i class="far fa-eye"></i></a> &nbsp; -->
+                    <a href="{{ url('finance/cash-voucher/'.$voucher->id.'/edit') }}"><i class="far fa-edit"></i></a> &nbsp;
+                    <a href="{{ url('finance/print-voucher/'.$voucher->id) }}" target="_blank"><i class="fas fa-print"></i></a> &nbsp;
+                    {{--@if(!$voucher->hasRole('administrator'))--}}
+                      {{--<button class="btn btn-xs btn-danger user_destroy"--}}
+                        {{--data-url="{{ route('admin.users.destroy', [$voucher->id]) }}" data-toggle="tooltip" data-placement="top" data-title="{{ __('views.admin.users.index.delete') }}">--}}
+                      {{--<i class="fa fa-trash"></i>--}}
+                      {{--</button>--}}
+                    {{--@endif--}}
+                  </td>
                 </tr>
                 @endforeach
             </tbody>
         </table>
-    </div>
-    <div class="row">
         {{ $vouchers->links() }}
     </div>
 
