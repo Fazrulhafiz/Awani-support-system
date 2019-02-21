@@ -59,32 +59,36 @@ class VoucherController extends Controller
 
     public function store(Request $request)
     {
-        DB::table('cash_voucher')->insert([
-            'voucher_no'  =>  $request->get('voucher_no'),
-            'pay_to'  =>  $request->get('pay_to'),
-            'payment_for'  =>  $request->get('payment_for'),
-            'ringgit'  =>  $request->get('ringgit'),
-            'rm'  =>  $request->get('rm'),
-            'cost_centre'  =>  $request->get('cost_centre'),
-            'gl_code'  =>  $request->get('gl_code'),
-        ]);
-        return redirect('finance')->with('key', 'Your voucher has been created!');
+      $glcode_str = join(",", $request->input('gl_code'));
+
+      DB::table('cash_voucher')->insert([
+        'voucher_no'  =>  $request->get('voucher_no'),
+        'pay_to'  =>  $request->get('pay_to'),
+        'payment_for'  =>  $request->get('payment_for'),
+        'ringgit'  =>  $request->get('ringgit'),
+        'rm'  =>  $request->get('rm'),
+        'cost_centre'  =>  $request->get('cost_centre'),
+        'gl_code'  =>  $glcode_str,
+      ]);
+      return redirect('finance')->with('key', 'Your voucher has been created!');
     }
 
     public function update(Request $request)
     {
-        DB::table('cash_voucher')
-        ->where('voucher_no', $request->get('voucher_no'))
-        ->update([
-            'pay_to'  =>  $request->get('pay_to'),
-            'payment_for'  =>  $request->get('payment_for'),
-            'ringgit'  =>  $request->get('ringgit'),
-            'rm'  =>  $request->get('rm'),
-            'cost_centre'  =>  $request->get('cost_centre'),
-            'gl_code'  =>  $request->get('gl_code'),
-        ]);
+      $glcode_str = join(",", $request->input('gl_code'));
 
-        return redirect('finance')->with('key', 'Your voucher has been updated!');
+      DB::table('cash_voucher')
+      ->where('voucher_no', $request->get('voucher_no'))
+      ->update([
+        'pay_to'  =>  $request->get('pay_to'),
+        'payment_for'  =>  $request->get('payment_for'),
+        'ringgit'  =>  $request->get('ringgit'),
+        'rm'  =>  $request->get('rm'),
+        'cost_centre'  =>  $request->get('cost_centre'),
+        'gl_code'  =>  $glcode_str,
+      ]);
+
+      return redirect('finance')->with('key', 'Your voucher has been updated!');
     }
 
     public function showvoucher($voucher)
@@ -96,8 +100,8 @@ class VoucherController extends Controller
     {
         $voucherdetail = DB::table('cash_voucher')->where('id', '=', $voucher)->get();
         $cost_centre = DB::table('cost_centre')->get();
-        $gl_code = DB::table('gl_code')->get();
+        $glcode_str = DB::table('gl_code')->get(); //2,4,5
 
-        return view('finance.cash-voucher.edit')->with(['voucherdetail' => $voucherdetail, 'cost_centre' => $cost_centre, 'gl_code' => $gl_code]);
+        return view('finance.cash-voucher.edit')->with(['voucherdetail' => $voucherdetail, 'cost_centre' => $cost_centre, 'glcode_str' => $glcode_str]);
     }
 }

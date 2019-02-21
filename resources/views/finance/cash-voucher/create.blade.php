@@ -47,7 +47,7 @@
             <tr><td>&nbsp;</td></tr>
             @foreach($gl_code as $glcode)
             <tr>
-            <td>{!! Form::checkbox('gl_code', $glcode->id, null) !!} {{ $glcode->gl_code." ".$glcode->gl_name }}</td>
+            <td>{!! Form::checkbox('gl_code[]', $glcode->id, null) !!} {{ $glcode->gl_code." ".$glcode->gl_name }}</td>
             </tr>
             @endforeach
             {!! Form::label('gl_code', 'GL code', ['class' => 'active']) !!}
