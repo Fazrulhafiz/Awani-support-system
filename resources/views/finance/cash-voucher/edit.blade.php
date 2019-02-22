@@ -50,12 +50,11 @@
         <div class="controls">
           <table>
             <tr><td>&nbsp;</td></tr>
-            <?php $gl_code = explode(',', $glcode_str); ?>
+            <?php $glcode_che = explode(',', $voucherdetail[0]->gl_code); ?>
             <?php $gldata = array(); ?>
             @foreach($gl_code as $glcode)
-              <?php $gldata[] = $voucherdetail[0]->gl_code; ?>
               <tr>
-              <td>{!! Form::checkbox('gl_code[]', $glcode->id, in_array($glcode->id, $gldata)) !!} {{ $glcode->gl_code." ".$glcode->gl_name }}</td>
+              <td>{!! Form::checkbox('gl_code[]', $glcode->id, in_array($glcode->id, $glcode_che)) !!} {{ $glcode->gl_code." ".$glcode->gl_name }}</td>
               </tr>
             @endforeach
             {!! Form::label('gl_code', 'GL code', ['class' => 'active']) !!}

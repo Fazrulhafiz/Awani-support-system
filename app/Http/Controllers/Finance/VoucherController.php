@@ -100,8 +100,8 @@ class VoucherController extends Controller
     {
         $voucherdetail = DB::table('cash_voucher')->where('id', '=', $voucher)->get();
         $cost_centre = DB::table('cost_centre')->get();
-        $glcode_str = DB::table('gl_code')->get(); //2,4,5
+        $gl_code = DB::table('gl_code')->get();
 
-        return view('finance.cash-voucher.edit')->with(['voucherdetail' => $voucherdetail, 'cost_centre' => $cost_centre, 'glcode_str' => $glcode_str]);
+        return view('finance.cash-voucher.edit')->with(['voucherdetail' => $voucherdetail, 'cost_centre' => $cost_centre, 'gl_code' => $gl_code]);
     }
 }
