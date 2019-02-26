@@ -142,9 +142,17 @@ Route::group(['prefix' => 'finance', 'as' => 'finance.', 'namespace' => 'Finance
             Fpdf::Cell(50, 8, 'DATE: '.date("d/m/Y",strtotime($voucherdetail[0]->created_date)), $border);
             Fpdf::SetXY(150, 46+$lastY);
             Fpdf::Cell(50, 8, 'Cost Centre: '.$cost_centre, 1);
-            Fpdf::SetXY(150, 54+$lastY);
+            $glY = 54;
+            $glcode_str = explode(',', $voucherdetail[0]->gl_code);
+            $glcode_all = '';
+            for ($i=0; $i < count($glcode_str); $i++) {
+              if ($i > 0) { $glcode_all .= ","; }
+              $gl_code = DB::table('gl_code')->where('id', '=', $glcode_str[$i])->value('gl_code');
+              $glcode_all .= $gl_code;
+            }
+            Fpdf::SetXY(150, $glY+$lastY);
             Fpdf::Cell(50, 8, 'GL Code: '.$glcode_all, 1);
-            Fpdf::SetXY(150, 62+$lastY);
+            Fpdf::SetXY(150, ($glY+8)+$lastY);
             Fpdf::MultiCell(50, 8, "Cheque Signed by:\n ", 1);
             Fpdf::SetXY(150, 84+$lastY);
             Fpdf::MultiCell(50, 8, 'RM: '.$voucherdetail[0]->rm, 1);
