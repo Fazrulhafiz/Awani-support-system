@@ -97,13 +97,13 @@ Route::group(['prefix' => 'finance', 'as' => 'finance.', 'namespace' => 'Finance
     {
         $voucherdetail = DB::table('cash_voucher')->where('id', '=', $voucherid)->get();
         $cost_centre = DB::table('cost_centre')->where('id', '=', $voucherdetail[0]->cost_centre)->value('cost_centre');
-        $glcode_str = explode(',', $voucherdetail[0]->gl_code);
-        $glcode_all = '';
-        for ($i=0; $i < count($glcode_str); $i++) {
-          if ($i > 0) { $glcode_all .= ","; }
-          $gl_code = DB::table('gl_code')->where('id', '=', $glcode_str[$i])->value('gl_code');
-          $glcode_all .= $gl_code;
-        }
+        // $glcode_str = explode(',', $voucherdetail[0]->gl_code);
+        // $glcode_all = '';
+        // for ($i=0; $i < count($glcode_str); $i++) {
+        //   if ($i > 0) { $glcode_all .= ","; }
+        //   $gl_code = DB::table('gl_code')->where('id', '=', $glcode_str[$i])->value('gl_code');
+        //   $glcode_all .= $gl_code;
+        // }
         // $gl_code = DB::table('gl_code')->where('id', '=', $voucherdetail[0]->gl_code)->value('gl_code');
 
         $copytitle = ['Finance\'s Copy', 'Customer\'s Copy'];
@@ -151,7 +151,7 @@ Route::group(['prefix' => 'finance', 'as' => 'finance.', 'namespace' => 'Finance
               $glcode_all .= $gl_code;
             }
             Fpdf::SetXY(150, $glY+$lastY);
-            Fpdf::Cell(50, 8, 'GL Code: '.$glcode_all, 1);
+            Fpdf::Cell(50, 8, 'GL Code: '.$voucherdetail[0]->gl_code, 1);
             Fpdf::SetXY(150, ($glY+8)+$lastY);
             Fpdf::MultiCell(50, 8, "Cheque Signed by:\n ", 1);
             Fpdf::SetXY(150, 84+$lastY);

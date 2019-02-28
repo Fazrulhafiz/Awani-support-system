@@ -1,0 +1,19 @@
+.record_table {
+    width: 100%;
+    border-collapse: collapse;
+}
+.record_table tr:hover {
+    background: #eee;
+}
+.record_table td {
+    border: 1px solid #eee;
+}
+.highlight_row {
+    background: #eee;
+}
+/* .container {
+    border:2px solid #ccc;
+    width:300px;
+    height: 100px;
+    overflow-y: scroll;
+}  */
