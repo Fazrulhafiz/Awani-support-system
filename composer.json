@@ -36,12 +36,13 @@
         "nwidart/laravel-modules": "^4.0"
     },
     "require-dev": {
-        "fzaninotto/faker": "~1.4",
-        "mockery/mockery": "0.9.*",
-        "phpunit/phpunit": "~6.0",
         "barryvdh/laravel-debugbar": "^2.1",
         "barryvdh/laravel-ide-helper": "^2.2",
-        "filp/whoops": "~2.0"
+        "filp/whoops": "~2.0",
+        "fzaninotto/faker": "~1.4",
+        "johnkary/phpunit-speedtrap": "^3.1",
+        "mockery/mockery": "0.9.*",
+        "phpunit/phpunit": "~8.0"
     },
     "autoload": {
         "classmap": [

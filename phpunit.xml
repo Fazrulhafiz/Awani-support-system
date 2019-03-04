@@ -28,4 +28,18 @@
         <env name="SESSION_DRIVER" value="array"/>
         <env name="QUEUE_DRIVER" value="sync"/>
     </php>
+    <listeners>
+      <listener class="JohnKary\PHPUnit\Listener\SpeedTrapListener">
+          <arguments>
+              <array>
+                  <element key="slowThreshold">
+                      <integer>500</integer>
+                  </element>
+                  <element key="reportLength">
+                      <integer>5</integer>
+                  </element>
+              </array>
+          </arguments>
+      </listener>
+    </listeners>
 </phpunit>
