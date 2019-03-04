@@ -41,8 +41,8 @@
          </div>
       </div>
       <!--  Details -->
-      <div class="form-group col-1-3">
-        <div class="controls">
+      <div class="form-group col-1-3 limited_container">
+        <div>
           <table>
             <tr><td>&nbsp;</td></tr>
             @foreach($gl_code as $glcode)

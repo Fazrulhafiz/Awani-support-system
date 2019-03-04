@@ -46,8 +46,8 @@
          </div>
       </div>
       <!--  Details -->
-      <div class="form-group col-1-3">
-        <div class="controls">
+      <div class="form-group col-1-3 limited_container">
+        <div>
           <table>
             <tr><td>&nbsp;</td></tr>
             <?php $glcode_che = explode(',', $voucherdetail[0]->gl_code); ?>
