@@ -7,17 +7,17 @@
     "license": "MIT",
     "authors": [
         {
-            "name": "Labs64 GmbH",
-            "email": "info@labs64.com",
-            "homepage": "http://www.labs64.com"
+            "name": "fazrulhafiz",
+            "email": "fazrul11@hotmail.com",
+            "homepage": "http://www.laypark.com"
         }
     ],
     "support": {
-        "email": "info@labs64.com",
-        "issues": "https://github.com/Labs64/laravel-boilerplate/issues",
-        "wiki": "https://github.com/Labs64/laravel-boilerplate",
-        "source": "https://github.com/Labs64/laravel-boilerplate",
-        "docs": "https://github.com/Labs64/laravel-boilerplate"
+        "email": "admin@laypark.com",
+        "issues": "https://github.com/Fazrulhafiz/Awani-support-system/issues",
+        "wiki": "https://github.com/Fazrulhafiz/Awani-support-system",
+        "source": "https://github.com/Fazrulhafiz/Awani-support-system",
+        "docs": "https://github.com/Fazrulhafiz/Awani-support-system"
     },
     "require": {
         "php": ">=7.0",
