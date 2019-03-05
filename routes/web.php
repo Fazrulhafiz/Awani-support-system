@@ -108,7 +108,7 @@ Route::group(['prefix' => 'finance', 'as' => 'finance.', 'namespace' => 'Finance
         if ($glcode_count > 3) {
           $multicell_h = 5;
         } elseif ($glcode_count > 1) {
-          $multicell_h = 10;
+          $multicell_h = 7.5;
         } else {
           $multicell_h = 15;
         }
