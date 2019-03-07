@@ -29,16 +29,26 @@
             </div>
           </div>
         </div>
-        <div class="controls">
-          <i class="fa fa-sort"></i>
-          <select class="floatLabel" name="cost_centre">
-              <option value="select">SELECT ONE</option>
-              @foreach($cost_centre as $cost)
-              <option value="{{$cost->id}}">{{$cost->cost_centre." ".$cost->description}}</option>
-              @endforeach
-          </select>
-          {!! Form::label('cost_centre', 'Cost Centre', ['class' => 'active']) !!}
-         </div>
+        <div class="grid">
+          <div class="col-1-3">
+            <div class="controls">
+              <i class="fa fa-sort"></i>
+              <select class="floatLabel" name="cost_centre">
+                  <option value="select">SELECT ONE</option>
+                  @foreach($cost_centre as $cost)
+                  <option value="{{$cost->id}}">{{$cost->cost_centre." ".$cost->description}}</option>
+                  @endforeach
+              </select>
+              {!! Form::label('cost_centre', 'Cost Centre', ['class' => 'active']) !!}
+            </div>
+          </div>
+          <div class="col-2-3">
+            <div class="controls">
+              {!! Form::text('voucher_date', null, ['id' => 'datepicker']) !!}
+              {!! Form::label('voucher_date', 'Voucher date', ['class' => 'active']) !!}
+            </div>
+          </div>
+        </div>
       </div>
       <!--  Details -->
       <div class="form-group col-1-3 limited_container">
@@ -56,7 +66,7 @@
       </div> <!-- /.form-group -->
       <div class="grid">
         {!! Form::submit('Submit', ['class' => 'col-1-4']) !!}
-        <a class="col-1-4" href="{{ url('/finance') }}">Cancel</a>
+        <a class="col-2-4" href="{{ url('/finance') }}">Cancel</a>
       </div>
 
     {!! Form::close() !!}
