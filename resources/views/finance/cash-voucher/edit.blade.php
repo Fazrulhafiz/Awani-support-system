@@ -49,7 +49,11 @@
            </div>
            <div class="col-1-3">
              <div class="controls">
-               {!! Form::text('voucher_date', date("m/d/Y",strtotime($voucherdetail[0]->voucher_date)), ['id' => 'datepicker']) !!}
+                @if ($voucherdetail[0]->voucher_date == null)
+                  {!! Form::text('voucher_date', date("m/d/Y"), ['id' => 'datepicker']) !!}
+                @else
+                  {!! Form::text('voucher_date', date("m/d/Y",strtotime($voucherdetail[0]->voucher_date)), ['id' => 'datepicker']) !!}
+                @endif
                {!! Form::label('voucher_date', 'Voucher date', ['class' => 'active']) !!}
                <script>
                    $('#datepicker').datepicker({
