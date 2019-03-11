@@ -69,6 +69,7 @@ class VoucherController extends Controller
         'rm'  =>  $request->get('rm'),
         'cost_centre'  =>  $request->get('cost_centre'),
         'gl_code'  =>  $glcode_str,
+        'voucher_date'  =>  date("Y-m-d",strtotime($request->get('voucher_date'))),
       ]);
       return redirect('finance')->with('key', 'Your voucher has been created!');
     }
@@ -86,6 +87,7 @@ class VoucherController extends Controller
         'rm'  =>  $request->get('rm'),
         'cost_centre'  =>  $request->get('cost_centre'),
         'gl_code'  =>  $glcode_str,
+        'voucher_date'  =>  date("Y-m-d",strtotime($request->get('voucher_date'))),
       ]);
 
       return redirect('finance')->with('key', 'Your voucher has been updated!');

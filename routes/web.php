@@ -148,7 +148,11 @@ Route::group(['prefix' => 'finance', 'as' => 'finance.', 'namespace' => 'Finance
             Fpdf::SetXY(150, 30+$lastY);
             Fpdf::Cell(50, 8, 'PCV NO: '.sprintf("%05d", $voucherdetail[0]->voucher_no), $border);
             Fpdf::SetXY(150, 38+$lastY);
-            Fpdf::Cell(50, 8, 'DATE: '.date("d/m/Y",strtotime($voucherdetail[0]->created_date)), $border);
+            if ($voucherdetail[0]->voucher_date == '' || $voucherdetail[0]->voucher_date == null) {
+              Fpdf::Cell(50, 8, 'DATE: '.date("d/m/Y",strtotime($voucherdetail[0]->created_date)), $border);
+            } else {
+              Fpdf::Cell(50, 8, 'DATE: '.date("d/m/Y",strtotime($voucherdetail[0]->voucher_date)), $border);
+            }
             Fpdf::SetXY(150, 46+$lastY);
             Fpdf::Cell(50, 8, 'Cost Centre: '.$cost_centre, 1);
             Fpdf::SetXY(150, 54+$lastY);

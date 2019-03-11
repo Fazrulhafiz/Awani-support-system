@@ -18,7 +18,7 @@
         <div class="grid">
           <div class="col-1-3">
             <div class="controls">
-              {!! Form::number('rm', null, ['class' => 'floatLabel', 'onkeyup' => 'convertNumberToWords(this.value)']) !!}
+              {!! Form::number('rm', null, ['class' => 'floatLabel', 'id' => 'rm', 'onkeyup' => 'convertNumberToWords(this.value)']) !!}
               {!! Form::label('rm', 'MYR') !!}
             </div>
           </div>
@@ -30,7 +30,7 @@
           </div>
         </div>
         <div class="grid">
-          <div class="col-1-3">
+          <div class="col-2-3">
             <div class="controls">
               <i class="fa fa-sort"></i>
               <select class="floatLabel" name="cost_centre">
@@ -42,10 +42,15 @@
               {!! Form::label('cost_centre', 'Cost Centre', ['class' => 'active']) !!}
             </div>
           </div>
-          <div class="col-2-3">
+          <div class="col-1-3">
             <div class="controls">
               {!! Form::text('voucher_date', null, ['id' => 'datepicker']) !!}
               {!! Form::label('voucher_date', 'Voucher date', ['class' => 'active']) !!}
+              <script>
+                  $('#datepicker').datepicker({
+                      uiLibrary: 'bootstrap'
+                  });
+              </script>
             </div>
           </div>
         </div>
@@ -64,9 +69,11 @@
           </table>
         </div>
       </div> <!-- /.form-group -->
-      <div class="grid">
-        {!! Form::submit('Submit', ['class' => 'col-1-4']) !!}
-        <a class="col-2-4" href="{{ url('/finance') }}">Cancel</a>
+      <div class="form-group col-1-3">
+        <div class="grid">
+          {!! Form::submit('Save', ['class' => 'col-1-4']) !!}
+          <a class="col-2-4" href="{{ url('/finance') }}">Cancel</a>
+        </div>
       </div>
 
     {!! Form::close() !!}

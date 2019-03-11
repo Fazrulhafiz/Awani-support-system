@@ -22,7 +22,13 @@
                 <tr>
                   <td>PCV <?php print sprintf("%05d", $voucher->voucher_no); ?></td>
                   <td>{{ $voucher->pay_to }}</td>
-                  <td>{{ \Carbon\Carbon::parse($voucher->created_date)->format('d/m/Y') }}</td>
+                  <td>
+                    <?php if($voucher->voucher_date) { ?>
+                      {{ \Carbon\Carbon::parse($voucher->voucher_date)->format('d/m/Y') }}
+                    <?php } else { ?>
+                      {{ \Carbon\Carbon::parse($voucher->created_date)->format('d/m/Y') }}
+                    <?php } ?>
+                  </td>
                   <td>
                     <!-- <a href="{{ url('finance/cash-voucher/'.$voucher->id.'/show') }}"><i class="far fa-eye"></i></a> &nbsp; -->
                     <a href="{{ url('finance/cash-voucher/'.$voucher->id.'/edit') }}"><i class="far fa-edit"></i></a> &nbsp;

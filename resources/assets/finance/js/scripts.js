@@ -1,81 +1,97 @@
 function convertNumberToWords(amount) {
-    var words = new Array();
-    words[0] = '';
-    words[1] = 'One';
-    words[2] = 'Two';
-    words[3] = 'Three';
-    words[4] = 'Four';
-    words[5] = 'Five';
-    words[6] = 'Six';
-    words[7] = 'Seven';
-    words[8] = 'Eight';
-    words[9] = 'Nine';
-    words[10] = 'Ten';
-    words[11] = 'Eleven';
-    words[12] = 'Twelve';
-    words[13] = 'Thirteen';
-    words[14] = 'Fourteen';
-    words[15] = 'Fifteen';
-    words[16] = 'Sixteen';
-    words[17] = 'Seventeen';
-    words[18] = 'Eighteen';
-    words[19] = 'Nineteen';
-    words[20] = 'Twenty';
-    words[30] = 'Thirty';
-    words[40] = 'Forty';
-    words[50] = 'Fifty';
-    words[60] = 'Sixty';
-    words[70] = 'Seventy';
-    words[80] = 'Eighty';
-    words[90] = 'Ninety';
-    amount = amount.toString();
-    var atemp = amount.split(".");
-    var number = atemp[0].split(",").join("");
-    var n_length = number.length;
-    var words_string = "";
-    if (n_length <= 9) {
-        var n_array = new Array(0, 0, 0, 0, 0, 0, 0, 0, 0);
-        var received_n_array = new Array();
-        for (var i = 0; i < n_length; i++) {
-            received_n_array[i] = number.substr(i, 1);
-        }
-        for (var i = 9 - n_length, j = 0; i < 9; i++, j++) {
-            n_array[i] = received_n_array[j];
-        }
-        for (var i = 0, j = 1; i < 9; i++, j++) {
-            if (i == 0 || i == 2 || i == 4 || i == 7) {
-                if (n_array[i] == 1) {
-                    n_array[j] = 10 + parseInt(n_array[j]);
-                    n_array[i] = 0;
-                }
-            }
-        }
-        value = "";
-        for (var i = 0; i < 9; i++) {
-            if (i == 0 || i == 2 || i == 4 || i == 7) {
-                value = n_array[i] * 10;
-            } else {
-                value = n_array[i];
-            }
-            if (value != 0) {
-                words_string += words[value] + " ";
-            }
-            if ((i == 1 && value != 0) || (i == 0 && value != 0 && n_array[i + 1] == 0)) {
-                words_string += "Crores ";
-            }
-            if ((i == 3 && value != 0) || (i == 2 && value != 0 && n_array[i + 1] == 0)) {
-                words_string += "Lakhs ";
-            }
-            if ((i == 5 && value != 0) || (i == 4 && value != 0 && n_array[i + 1] == 0)) {
-                words_string += "Thousand ";
-            }
-            if (i == 6 && value != 0 && (n_array[i + 1] != 0 && n_array[i + 2] != 0)) {
-                words_string += "Hundred and ";
-            } else if (i == 6 && value != 0) {
-                words_string += "Hundred ";
-            }
-        }
-        words_string = words_string.split("  ").join(" ");
+  var bigNumArry = new Array('', ' Thousand', ' Million', ' Billion', ' Trillion', ' Quadrillion', ' Quintillion');
+
+  var output = '';
+  var numString = document.getElementById('rm').value;
+  var finlOutPut = new Array();
+
+  if (numString == '0') {
+    $('#ringgit').val("Zero");
+    return;
+  }
+
+  if (numString == 0) {
+    $('#ringgit').val("Please enter only numbers");
+    return;
+  }
+
+  var i = numString.length;
+  i = i - 1;
+
+  //cut the number to grups of three digits and add them to the Arry
+  while (numString.length > 3) {
+    var triDig = new Array(3);
+    triDig[2] = numString.charAt(numString.length - 1);
+    triDig[1] = numString.charAt(numString.length - 2);
+    triDig[0] = numString.charAt(numString.length - 3);
+
+    var varToAdd = triDig[0] + triDig[1] + triDig[2];
+    finlOutPut.push(varToAdd);
+    i--;
+    numString = numString.substring(0, numString.length - 3);
+  }
+  finlOutPut.push(numString);
+  finlOutPut.reverse();
+
+  //conver each grup of three digits to english word
+  //if all digits are zero the triConvert
+  //function return the string "dontAddBigSufix"
+  for (j = 0; j < finlOutPut.length; j++) {
+    finlOutPut[j] = triConvert(parseInt(finlOutPut[j], 10));
+  }
+
+  var bigScalCntr = 0; //this int mark the million billion trillion... Arry
+
+  for (b = finlOutPut.length - 1; b >= 0; b--) {
+    if (finlOutPut[b] != "dontAddBigSufix") {
+      finlOutPut[b] = finlOutPut[b] + bigNumArry[bigScalCntr] +'';
+      bigScalCntr++;
+    } else {
+      //replace the string at finlOP[b] from "dontAddBigSufix" to empty String.
+      finlOutPut[b] = ' ';
+      bigScalCntr++; //advance the counter
     }
-    $('#ringgit').val(words_string + "Only");
+  }
+
+  //convert The output Arry to , more printable string
+  for (n = 0; n < finlOutPut.length; n++) {
+    output += finlOutPut[n];
+  }
+
+  $('#ringgit').val(output + " Only");
+}
+
+function triConvert(num) {
+  var ones = new Array('', ' One', ' Two', ' Three', ' Four', ' Five', ' Six', ' Seven', ' Eight', ' Nine', ' Ten', ' Eleven', ' Twelve', ' Thirteen', ' Fourteen', ' Fifteen', ' Sixteen', ' Seventeen', ' Eighteen', ' Nineteen');
+  var tens = new Array('', '', ' Twenty', ' Thirty', ' Forty', ' Fifty', ' Sixty', ' Seventy', ' Eighty', ' Ninety');
+  var hundred = ' Hundred';
+  var output = '';
+  var numString = num.toString();
+
+  if (num == 0) {
+    return 'dontAddBigSufix';
+  }
+  //the case of 10, 11, 12 ,13, .... 19
+  if (num < 20) {
+    output = ones[num];
+    return output;
+  }
+
+  //100 and more
+  if (numString.length == 3) {
+    output = ones[parseInt(numString.charAt(0))] + hundred;
+		if(ones[parseInt(numString.charAt(1) + numString.charAt(2))]) {
+			output += ones[parseInt(numString.charAt(1) + numString.charAt(2))];
+      return output;
+    }
+
+		output += tens[parseInt(numString.charAt(1))];
+    output += ones[parseInt(numString.charAt(2))];
+    return output;
+  }
+
+  output += tens[parseInt(numString.charAt(0))];
+  output += ones[parseInt(numString.charAt(1))];
+
+  return output;
 }

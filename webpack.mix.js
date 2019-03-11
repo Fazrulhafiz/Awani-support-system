@@ -149,3 +149,11 @@ mix.styles([
    'resources/assets/mcr/css/mcr.css',
    'resources/assets/awani/css/style.css',
  ], 'public/assets/asa/css/awani.css').version();
+
+mix.scripts([
+  'resources/assets/awani/js/gijgo.js',
+], 'public/assets/asa/js/gijgo.js').version();
+
+mix.styles([
+  'resources/assets/awani/css/gijgo.css',
+], 'public/assets/asa/css/gijgo.css').version();
