@@ -14,21 +14,25 @@
         <tr>
           <th scope="col">@sortablelink('req_type', 'Request type',['page' => $onboarders->currentPage()])</th>
           <th scope="col">@sortablelink('requester_id', 'Requester',['page' => $onboarders->currentPage()])</th>
-          <th scope="col">@sortablelink('created_date', __('views.admin.finance.dashboard.table_header_2'),['page' => $onboarders->currentPage()])</th>
+          <th scope="col">@sortablelink('custodian_id', 'For',['page' => $onboarders->currentPage()])</th>
+          <th scope="col">Justification</th>
+          <th scope="col">@sortablelink('created_date', 'Date request',['page' => $onboarders->currentPage()])</th>
           <th scope="col">Actions</th>
         </tr>
         </thead>
         <tbody>
             @foreach($onboarders as $boarder)
             <tr>
-              <td>PCV <?php print sprintf("%05d", $boarder->req_type); ?></td>
+              <td>{{ $boarder->req_type }}</td>
               <td>{{ $boarder->requester_id }}</td>
+              <td>{{ $boarder->custodian_id }}</td>
+              <td><?php echo trim(substr($boarder->justification, 0 , 100)).'...'; ?></td>
               <td>
                   {{ \Carbon\Carbon::parse($boarder->created_date)->format('d/m/Y') }}
               </td>
               <td>
-                <a href="{{ url('finance/cash-voucher/'.$boarder->id.'/edit') }}"><i class="far fa-edit"></i></a> &nbsp;
-                <a href="{{ url('finance/print-voucher/'.$boarder->id) }}" target="_blank"><i class="fas fa-print"></i></a> &nbsp;
+                <a href="{{ url('mcr/new-requestr/'.$boarder->id.'/edit') }}"><i class="far fa-edit"></i></a> &nbsp;
+                <a href="{{ url('mcr/print-request/'.$boarder->id) }}" target="_blank"><i class="fas fa-print"></i></a> &nbsp;
                 {{--@if(!$boarder->hasRole('administrator'))--}}
                   {{--<button class="btn btn-xs btn-danger user_destroy"--}}
                     {{--data-url="{{ route('admin.users.destroy', [$boarder->id]) }}" data-toggle="tooltip" data-placement="top" data-title="{{ __('views.admin.users.index.delete') }}">--}}
