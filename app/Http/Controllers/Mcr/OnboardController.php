@@ -32,10 +32,10 @@ class OnboardController extends Controller
      */
     public function index()
     {
-        $vouchers = DB::table('onboard_in')->paginate(10);
+        $onboarder = DB::table('onboard_in')->paginate(10);
         // dd($vouchers);
 
-        return view('mcr.dashboard', ['req_id' => $vouchers]);
+        return view('mcr.dashboard', ['onboarders' => $onboarder]);
     }
 
     /**
