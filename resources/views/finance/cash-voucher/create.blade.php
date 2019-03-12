@@ -58,7 +58,7 @@
       <!--  Details -->
       <div class="form-group col-1-3 limited_container">
         <div>
-          <table>
+          <table class="record_table">
             <tr><td>&nbsp;</td></tr>
             @foreach($gl_code as $glcode)
             <tr>

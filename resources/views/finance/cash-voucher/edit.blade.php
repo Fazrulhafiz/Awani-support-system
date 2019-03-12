@@ -67,7 +67,7 @@
       <!--  Details -->
       <div class="form-group col-1-3 limited_container">
         <div>
-          <table>
+          <table class="record_table">
             <tr><td>&nbsp;</td></tr>
             <?php $glcode_che = explode(',', $voucherdetail[0]->gl_code); ?>
             <?php $gldata = array(); ?>
