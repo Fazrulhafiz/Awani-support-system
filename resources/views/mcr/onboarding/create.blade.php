@@ -83,8 +83,9 @@
             </td>
           </tr>
           <tr>
-            <td colspan=2 class="label">Cost centre</td>
-            <td colspan=2>
+            <td colspan=2></td>
+            <td class="label">Cost centre</td>
+            <td>
               <select data-field="period" name="custodian_cost_centre">
                   <option value="select">SELECT ONE</option>
                   @foreach($cost_centre as $cost)
@@ -163,6 +164,12 @@
           <div class="break"></div>
           <h2>JUSTIFICATION <span data-input-name="po_number">on request</span>.</h2>
           <div data-input-name="notes" data-input-type="contenteditable" class="note-box" contenteditable></div>
+        </div>
+        <div class="form-group col-1-3">
+          <div class="grid">
+            {!! Form::submit('Apply', ['class' => 'col-1-4']) !!}
+            <a class="col-2-4" href="{{ url('/mcr') }}">Cancel</a>
+          </div>
         </div>
       </div>
     </div>

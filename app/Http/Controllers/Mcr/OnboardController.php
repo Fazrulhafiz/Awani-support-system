@@ -73,6 +73,7 @@ class OnboardController extends Controller
             'head_it'  =>  $request->get('head_it'),
             'itd_hod'  =>  $request->get('itd_hod'),
             'itd_crm'  =>  $request->get('itd_crm'),
+            'request_status'  =>  $request->get('request_status'),
         ]);
 
         DB::table('emp_particulars')->insert([
