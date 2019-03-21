@@ -18,7 +18,7 @@
         <div class="grid">
           <div class="col-1-3">
             <div class="controls">
-              {!! Form::number('rm', null, ['class' => 'floatLabel', 'id' => 'rm', 'onkeyup' => 'convertNumberToWords(this.value)']) !!}
+              {!! Form::number('rm', null, ['class' => 'floatLabel', 'id' => 'rm', 'onkeyup' => 'convertNumberToWords(this.value)', 'step' => '.01']) !!}
               {!! Form::label('rm', 'MYR') !!}
             </div>
           </div>

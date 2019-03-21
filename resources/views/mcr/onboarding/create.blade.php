@@ -83,9 +83,8 @@
             </td>
           </tr>
           <tr>
-            <td colspan=2></td>
-            <td class="label">Cost centre</td>
-            <td>
+            <td colspan=2 class="label">Cost centre</td>
+            <td colspan=2>
               <select data-field="period" name="custodian_cost_centre">
                   <option value="select">SELECT ONE</option>
                   @foreach($cost_centre as $cost)

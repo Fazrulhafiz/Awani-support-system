@@ -18,7 +18,7 @@
         <div class="grid">
           <div class="col-1-3">
             <div class="controls">
-              {!! Form::number('rm', $voucherdetail[0]->rm, ['class' => 'floatLabel', 'id' => 'rm', 'onkeyup' => 'convertNumberToWords(this.value)']) !!}
+              {!! Form::number('rm', $voucherdetail[0]->rm, ['class' => 'floatLabel', 'id' => 'rm', 'onkeyup' => 'convertNumberToWords(this.value)', 'step' => '.01']) !!}
               {!! Form::label('rm', 'MYR', ['class' => 'active']) !!}
             </div>
           </div>
