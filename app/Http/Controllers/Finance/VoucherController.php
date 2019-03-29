@@ -59,6 +59,13 @@ class VoucherController extends Controller
 
     public function store(Request $request)
     {
+      $validatedData = $request->validate([
+          'pay_to' => 'required|min:6|max:255',
+          'payment_for' => 'required',
+          'cost_centre' => 'required',
+          'gl_code' => 'required',
+      ]);
+
       $glcode_str = join(",", $request->input('gl_code'));
 
       DB::table('cash_voucher')->insert([
@@ -76,6 +83,13 @@ class VoucherController extends Controller
 
     public function update(Request $request)
     {
+      $validatedData = $request->validate([
+          'pay_to' => 'required|min:6|max:255',
+          'payment_for' => 'required',
+          'cost_centre' => 'required',
+          'gl_code' => 'required',
+      ]);
+
       $glcode_str = join(",", $request->input('gl_code'));
 
       DB::table('cash_voucher')
