@@ -39,6 +39,22 @@ class OnboardController extends Controller
     }
 
     /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function autocomplete(Request $request)
+    {
+        $data = DB::table('emp_particulars')
+                ->select('fname', 'lname')
+                ->where("fname","LIKE","%{$request->input('query')}%")
+                ->orWhere("lname","LIKE","%{$request->input('query')}%")
+                ->get();
+
+        return response()->json($data);
+    }
+
+    /**
      * New voucher application.
      *
      * @return \Illuminate\Http\Response
@@ -59,14 +75,16 @@ class OnboardController extends Controller
         $custodian_id = DB::table('emp_particulars')->where('employee_id', $request->get('custodian_id'));
         $requester_id = DB::table('emp_particulars')->where('employee_id', $request->get('requester_id'));
 
+        $services_str = join(",", $request->input('services'));
+
         DB::table('onboard_in')->insert([
-            'req_type'  =>  $request->get('req_type'),
+            'req_type'  =>  $request->get('request_type'),
             'emp_position'  =>  $request->get('emp_position'),
             'custodian_status'  =>  $request->get('custodian_status'),
             'custodian_duration'  =>  $request->get('custodian_duration'),
             'custodian_id'  =>  $request->get('custodian_id'),
             'requester_id'  =>  $request->get('requester_id'),
-            'services_id'  =>  $request->get('services_id'),
+            'services_id'  =>  $services_str,
             'justification'  =>  $request->get('justification'),
             'user_manager'  =>  $request->get('user_manager'),
             'hod_id'  =>  $request->get('hod_id'),
@@ -77,6 +95,27 @@ class OnboardController extends Controller
         ]);
 
         DB::table('emp_particulars')->insert([
+          'fname' => $request->get('custodian_name'),
+          'lname' => $request->get('lname'),
+          'employee_id' => $request->get('custodian_id'),
+          'designation' => $request->get('custodian_designation'),
+          'department_division' => $request->get('custodian_dnd'),
+          'location' => $request->get('custodian_location'),
+          'contact_numb' => $request->get('custodian_number'),
+          'network_id' => $request->get('custodian_networkid'),
+          'cost_centre' => $request->get('custodian_cost_centre')
+        ]);
+
+        DB::table('emp_particulars')->insert([
+          'fname' => $request->get('requester_name'),
+          'lname' => $request->get('lname'),
+          'employee_id' => $request->get('requester_id'),
+          'designation' => $request->get('requester_designation'),
+          'department_division' => $request->get('requester_dnd'),
+          'location' => $request->get('requester_location'),
+          'contact_numb' => $request->get('requester_number'),
+          'network_id' => $request->get('requester_networkid'),
+          'cost_centre' => $request->get('requester_cost_centre')
         ]);
 
         return redirect('mcr')->with('key', 'Your request has been created!');
@@ -103,14 +142,5 @@ class OnboardController extends Controller
         ]);
 
         return redirect('mcr')->with('key', 'Your request has been updated!');
-    }
-
-    public function editvoucher($voucher)
-    {
-        $voucherdetail = DB::table('cash_voucher')->where('id', '=', $voucher)->get();
-        $cost_centre = DB::table('cost_centre')->pluck('cost_centre', 'id', 'description');
-        $gl_code = DB::table('gl_code')->pluck('gl_code', 'id', 'gl_name');
-
-        return view('finance.cash-voucher.edit')->with(['voucherdetail' => $voucherdetail, 'cost_centre' => $cost_centre, 'gl_code' => $gl_code]);
     }
 }

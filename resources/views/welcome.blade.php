@@ -16,10 +16,16 @@
               <p>FINANCE</p>
             </a>
         @endif
-        @if (auth()->user()->hasRoles(['administrator']))
+        @if (auth()->user()->hasRoles(['administrator', 'mcr']))
             <a href="{{ url('/mcr') }}" class="card">
               <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sq-sample35.jpg" alt="sq-sample35" />
               <p>MCR</p>
+            </a>
+        @endif
+        @if (auth()->user()->hasRoles(['administrator']))
+            <a href="{{ url('/mcr') }}" class="card">
+              <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sq-sample35.jpg" alt="sq-sample35" />
+              <p>DATA</p>
             </a>
         @endif
     @endif

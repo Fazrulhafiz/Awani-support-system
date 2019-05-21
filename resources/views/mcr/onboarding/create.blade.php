@@ -102,7 +102,7 @@
           <tr>
             <td class="label">Name</td>
             <td colspan=3>
-              {!! Form::text('requester_name', null, ['class' => 'table-field', 'data-input-name' => 'requester_name']) !!}
+              {!! Form::text('requester_name', null, ['class' => 'predictspell table-field', 'data-input-name' => 'requester_name']) !!}
             </td>
           </tr>
           <tr>
@@ -154,7 +154,7 @@
             <?php $x = 0; ?>
             <tr>
             @foreach($services_type as $service_type)
-            <td>{!! Form::checkbox('services', $service_type->id, null) !!} {{ $service_type->description }}</td>
+            <td>{!! Form::checkbox('services[]', $service_type->id, null) !!} {{ $service_type->description }}</td>
             <?php $x += 1; if (($x % 3) == 0) { echo "</tr>"; } ?>
             @endforeach
           </table>
@@ -162,8 +162,9 @@
         <div class="notes-section">
           <div class="break"></div>
           <h2>JUSTIFICATION <span data-input-name="po_number">on request</span>.</h2>
-          <div data-input-name="notes" data-input-type="contenteditable" class="note-box" contenteditable></div>
+          {!! Form::textarea('justification', null, ['class' => 'note-box', 'data-input-name' => 'notes', 'data-input-type' => 'contenteditable', 'contenteditable']) !!}
         </div>
+        {!! Form::hidden('request_status', 'new request') !!}
         <div class="form-group col-1-3">
           <div class="grid">
             {!! Form::submit('Apply', ['class' => 'col-1-4']) !!}

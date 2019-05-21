@@ -187,6 +187,8 @@ Route::group(['prefix' => 'mcr', 'as' => 'mcr.', 'namespace' => 'Mcr', 'middlewa
     Route::get('new-request', 'OnboardController@create')->name('new-request.create');
     Route::post('new-request', 'OnboardController@store')->name('new-request.store');
 
+    Route::get('autocomplete', 'OnboardController@autocomplete')->name('autocomplete');
+
     Route::get('print-request/{req_id}', function($req_id)
     {
         $voucherdetail = DB::table('cash_voucher')->where('id', '=', $voucherid)->get();
